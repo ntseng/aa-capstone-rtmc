@@ -1,3 +1,5 @@
 Deploy: git push heroku main
 
 NPM scripts: heroku run ${npm script}
+
+Site: heroku open
