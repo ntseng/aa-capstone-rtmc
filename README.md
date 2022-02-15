@@ -1,7 +1,14 @@
 #
 This student project is
 
-## Setup Instructions
+## Local Viewing Instructions
+1. Clone this repo
+2. Run `npm install` from the root directory, this should install for both `/backend` and `/frontend` which have separate dependencies
+3. Make a postgres database
+4. Make a copy of `.env.example` in `/backend` and rename it to `.env`
+5. Populate your new `.env` with your database login values
+5. Run `npm start` in BOTH `/backend` and `/frontend` directories
+6. Go to `http://localhost:3000/` in any browser
 
 ## Time Budget
 Time allotted: 80 person*hours
