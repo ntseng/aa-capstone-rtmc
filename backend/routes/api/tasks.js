@@ -2,13 +2,13 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { Task } = require("../../db/models");
-const { Op } = require("sequelize/types");
+const { Op } = require("sequelize");
 
 const router = express.Router();
 
 router.get("/:userId(\\d+)", asyncHandler(async (req, res) => {
 	const { userId } = req.params;
-	const tasks = await Task.findAll({ userId });
+	const tasks = await Task.findAll({ userId }); //TODONOW check edge-case: no results
 
 	return res.json({
 		tasks
@@ -26,7 +26,7 @@ router.get("/:userId(\\d+)/:listId(\\d+)/:searchTerm", asyncHandler(async (req, 
 				title: { [Op.iLike]: searchTerm }
 			}
 		]
-	});
+	}); //TODONOW check edge-case: no results
 
 	return res.json({
 		tasks

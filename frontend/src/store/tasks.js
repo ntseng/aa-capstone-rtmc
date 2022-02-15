@@ -9,7 +9,7 @@ const getTasks = (tasks) => ({
 });
 
 export const fetchAllTasks = function ({ userId }) {
-	return dispatch => {
+	return async dispatch => {
 		const response = await csrfFetch(`/api/tasks/${userId}`);
 		const { tasks } = await response.json();
 		dispatch(getTasks(tasks));
@@ -18,7 +18,7 @@ export const fetchAllTasks = function ({ userId }) {
 }
 
 export const fetchSelectedTasks = function ({ userId, listId, searchTerm }) {
-	return dispatch => {
+	return async dispatch => {
 		const response = await csrfFetch(`/api/tasks/${userId}/${listId}/${searchTerm}`);
 		const { tasks } = await response.json();
 		dispatch(getTasks(tasks));
