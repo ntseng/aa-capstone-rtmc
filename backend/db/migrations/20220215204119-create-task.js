@@ -16,6 +16,10 @@ module.exports = {
 			listId: {
 				type: Sequelize.INTEGER
 			},
+			title: {
+				allowNull: false,
+				type: Sequelize.STRING
+			},
 			done: {
 				type: Sequelize.BOOLEAN,
 				allowNull: false,
