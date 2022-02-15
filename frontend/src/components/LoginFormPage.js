@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login, demoLogin } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './css/LoginForm.css';
 
 function LoginFormPage() {
@@ -53,6 +53,8 @@ function LoginFormPage() {
 				<button type="submit">Log In</button>
 			</form>
 			<div onClick={e => dispatch(demoLogin())}>Demo Login</div>
+			<span>Don't have an account?</span>
+			<Link to="/signup">Create account</Link>
 		</>
 	);
 }
