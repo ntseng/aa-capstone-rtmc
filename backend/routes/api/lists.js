@@ -19,4 +19,16 @@ router.post("/", asyncHandler(async (req, res) => {
 	return res.json({ list });
 }))
 
+router.patch("/", asyncHandler(async (req, res) => {
+	const { listId, title } = req.body;
+	const list = await List.findByPk(listId);
+	if (list) {
+		await list.update({ title });
+		list.save();
+		return res.json({ list });
+	} else {
+		return res.status(404).json({ errors: ["List could not be found."] })
+	}
+}))
+
 module.exports = router;
