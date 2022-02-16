@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllTasks, createTask } from "../store/tasks";
+import { fetchAllTasks, createTask, trashTask } from "../store/tasks";
 
 export default function TaskView() {
 	const dispatch = useDispatch();
@@ -13,6 +13,10 @@ export default function TaskView() {
 	useEffect(() => {
 		dispatch(fetchAllTasks({ ownerId: sessionUser.id }));
 	}, [dispatch, sessionUser.id])
+
+	function removeTask() {
+		dispatch(trashTask(selectedTaskId));
+	}
 
 	function submitTask() {
 		dispatch(createTask({
@@ -32,8 +36,17 @@ export default function TaskView() {
 				<span onClick={e => setShowCompleted(true)}>Complete</span>
 			</div>
 			<div id="task-action-container">
-				<button>Complete</button>
-				<button>Delete</button>
+				<button
+					disabled={selectedTaskId === null}
+				>
+					Complete
+				</button>
+				<button
+					disabled={selectedTaskId === null}
+					onClick={removeTask}
+				>
+					Delete
+				</button>
 			</div>
 			<div id="task-creation-container">
 				<input type="text"
@@ -47,11 +60,10 @@ export default function TaskView() {
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
 						return (
-							<div key={index}
-								onChange={e => setSelectedTaskId(task.id)}
-							>
+							<div key={index}>
 								<input type="checkbox"
 									checked={selectedTaskId === task.id}
+									onChange={e => setSelectedTaskId(task.id)}
 								/>
 								{task.title}
 							</div>
