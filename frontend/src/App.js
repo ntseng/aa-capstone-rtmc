@@ -34,8 +34,8 @@ function App() {
 					<Route path='/signup'>
 						<SignupFormPage />
 					</Route>
-					<Route path="/app">
-						{(user) ? <AppPage /> : <Redirect to='/login' />}
+					<Route path="/app/:listId">
+						{(user) ? <AppPage user={user} /> : <Redirect to='/login' />}
 					</Route>
 				</Switch>
 			)}
