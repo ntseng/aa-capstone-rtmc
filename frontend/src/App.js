@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import { restoreUser } from './store/session';
 import Navigation from './components/Navigation';
+import TaskView from './components/TaskView';
 // import { Modal } from './components/Modal';
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
 	//   const [showModal, setShowModal] = useState(false);
+	const user = useSelector(state => state.session.user);
+
 	useEffect(() => {
 		dispatch(restoreUser()).then(() => setIsLoaded(true));
 	}, [dispatch]);
@@ -30,6 +33,9 @@ function App() {
 					</Route>
 					<Route path='/signup'>
 						<SignupFormPage />
+					</Route>
+					<Route path="/app">
+						{(user) ? <TaskView /> : <Redirect to='/login' />}
 					</Route>
 				</Switch>
 			)}
