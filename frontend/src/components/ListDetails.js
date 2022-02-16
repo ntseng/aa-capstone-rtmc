@@ -1,17 +1,25 @@
 import { useSelector } from "react-redux"
 
-export default function ListDetails({ list }) {
+export default function ListDetails({ listTitle }) {
 	const tasks = useSelector(state => state.tasks);
-
+	let taskCount = 0;
+	let doneCount = 0;
+	for (const id in tasks) {
+		if (tasks[id].done) {
+			doneCount++;
+		} else {
+			taskCount++;
+		}
+	}
 	return (<>
-		<div>{list.title}</div>
+		<div>{listTitle}</div>
 		<span>
-			<div>{Object.values(tasks).reduce((count, task) => task.done ? count : count + 1, 0)}</div>
-			{`task`}
+			<div>{taskCount}</div>
+			{`task${taskCount === 1 ? "" : "s"}`}
 		</span>
 		<span>
-			<div>{Object.values(tasks).reduce((count, task) => task.done ? count + 1 : count, 0)}</div>
-			{`completed`}
+			<div>{doneCount}</div>
+			completed
 		</span>
 	</>)
 }

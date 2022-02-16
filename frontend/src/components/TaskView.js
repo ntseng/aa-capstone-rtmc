@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllTasks, createTask, trashTask, editTask } from "../store/tasks";
+import { fetchAllTasks, createTask, trashTask, editTask, fetchTasksFromList } from "../store/tasks";
 
-export default function TaskView() {
+export default function TaskView({ user, listId }) {
 	const dispatch = useDispatch();
-	const sessionUser = useSelector(state => state.session.user);
 	const tasks = useSelector(state => state.tasks);
 	const [showCompleted, setShowCompleted] = useState(false);
 	const [newTaskText, setNewTaskText] = useState("");
 	const [selectedTaskId, setSelectedTaskId] = useState(null);
 
 	useEffect(() => {
-		dispatch(fetchAllTasks({ ownerId: sessionUser.id }));
-	}, [dispatch, sessionUser.id])
+		if (isNaN(parseInt(listId))) {
+			dispatch(fetchAllTasks({ ownerId: user.id }));
+		} else {
+			dispatch(fetchTasksFromList({ ownerId: user.id, listId }));
+		}
+	}, [dispatch, user.id, listId])
 
 	function toggleComplete() {
 		dispatch(editTask({
@@ -27,7 +30,7 @@ export default function TaskView() {
 
 	function submitTask() {
 		dispatch(createTask({
-			ownerId: sessionUser.id,
+			ownerId: user.id,
 			listId: 1,
 			title: newTaskText
 		}))
