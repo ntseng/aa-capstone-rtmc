@@ -8,6 +8,7 @@ export default function TaskView() {
 	const tasks = useSelector(state => state.tasks);
 	const [showCompleted, setShowCompleted] = useState(false);
 	const [newTaskText, setNewTaskText] = useState("");
+	const [selectedTaskId, setSelectedTaskId] = useState(null);
 
 	useEffect(() => {
 		dispatch(fetchAllTasks({ ownerId: sessionUser.id }));
@@ -23,7 +24,9 @@ export default function TaskView() {
 	}
 
 	return (
-		<div id="task-view-container">
+		<div id="task-view-container"
+			onClick={e => setSelectedTaskId(null)}
+		>
 			<div id="completion-sort-container">
 				<span onClick={e => setShowCompleted(false)}>Incomplete</span>
 				<span onClick={e => setShowCompleted(true)}>Complete</span>
@@ -44,8 +47,12 @@ export default function TaskView() {
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
 						return (
-							<div key={index}>
-								<input type="checkbox" />
+							<div key={index}
+								onChange={e => setSelectedTaskId(task.id)}
+							>
+								<input type="checkbox"
+									checked={selectedTaskId === task.id}
+								/>
 								{task.title}
 							</div>
 						);
