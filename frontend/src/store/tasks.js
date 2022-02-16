@@ -118,7 +118,7 @@ export const editTask = function ({ task, listId, title, done, notes }) {
 				taskId: task.id,
 				listId: listId || task.listId,
 				title: title || task.title,
-				done: done || task.done,
+				done: done !== undefined ? done : task.done,
 				notes: notes || task.notes
 			})
 		}).catch(async response => {
