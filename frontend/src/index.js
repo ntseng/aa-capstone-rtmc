@@ -11,32 +11,34 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from './store/session';
+import * as taskActions from "./store/tasks.js";
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
-  restoreCSRF();
+	restoreCSRF();
 
-  window.csrfFetch = csrfFetch;
-  window.store = store;
-  window.sessionActions = sessionActions;
+	window.csrfFetch = csrfFetch;
+	window.store = store;
+	window.sessionActions = sessionActions;
+	window.taskActions = taskActions;
 }
 
 function Root() {
-  return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
-  );
+	return (
+		<ModalProvider>
+			<Provider store={store}>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</Provider>
+		</ModalProvider>
+	);
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<Root />
+	</React.StrictMode>,
+	document.getElementById('root')
 );

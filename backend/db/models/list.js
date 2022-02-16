@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	}
 	List.init({
+		ownerId: DataTypes.INTEGER,
 		title: DataTypes.STRING
 	}, {
 		sequelize,

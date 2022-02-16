@@ -42,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
 			return await User.scope('currentUser').findByPk(user.id);
 		};
 		static associate(models) {
-			// define association here
+			User.hasMany(models.List, { foreignKey: "ownerId" });
+			User.hasMany(models.Task, { foreignKey: "ownerId" });
 		}
 	};
 	User.init(
@@ -73,6 +74,7 @@ module.exports = (sequelize, DataTypes) => {
 					len: [60, 60],
 				},
 			},
+			//TODO #20 store id of Inbox list per user
 		},
 		{
 			sequelize,
