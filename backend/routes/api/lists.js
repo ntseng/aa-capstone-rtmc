@@ -12,4 +12,11 @@ router.get("/:ownerId(\\d+)/", asyncHandler(async (req, res) => {
 	return res.json({ lists });
 }))
 
+router.post("/", asyncHandler(async (req, res) => {
+	const { ownerId, title } = req.body;
+	const list = await List.create({ ownerId, title });
+
+	return res.json({ list });
+}))
+
 module.exports = router;

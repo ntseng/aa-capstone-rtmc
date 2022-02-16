@@ -28,6 +28,37 @@ export const fetchLists = function ({ ownerId }) {
 	}
 }
 
+const POST_LIST = "lists/POST_LIST";
+
+const postList = (list) => ({
+	type: POST_LIST,
+	list
+})
+
+export const createList = function ({ ownerId, title }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/lists/", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ownerId, title })
+		}).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { list } = await response.json();
+			dispatch(postList(list));
+			return response;
+		} else {
+			return response.errors;
+		}
+	}
+}
+
 export default function reducer(stateDotLists = {}, action) {
 	let updatedState = { ...stateDotLists };
 	switch (action.type) {
@@ -35,6 +66,9 @@ export default function reducer(stateDotLists = {}, action) {
 			action.lists.forEach(list => {
 				updatedState[list.id] = list;
 			})
+			return updatedState;
+		case POST_LIST:
+			updatedState[action.list.id] = action.list;
 			return updatedState;
 		default:
 			return stateDotLists;
