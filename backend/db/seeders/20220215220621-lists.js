@@ -46,6 +46,6 @@ module.exports = {
 		 * Example:
 		 * await queryInterface.bulkDelete('People', null, {});
 		 */
-		await queryInterface.bulkInsert("Lists", null, {});
+		await queryInterface.bulkDelete("Lists", null, {});
 	}
 };

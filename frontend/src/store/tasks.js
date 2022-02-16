@@ -60,7 +60,7 @@ export const createTask = function ({ ownerId, listId, title }) {
 
 const PATCH_TASK = "tasks/PATCH_TASK";
 
-const patchTASK = (task) => ({
+const patchTask = (task) => ({
 	type: PATCH_TASK,
 	task
 })
@@ -79,8 +79,30 @@ export const editTask = function ({ task, listId, title, done, notes }) {
 			})
 		})
 		const updatedTask = await response.json();
-		dispatch(patchTASK(updatedTask)); //TODO #22
+		dispatch(patchTask(updatedTask)); //TODO #22
 		return response;
+	}
+}
+
+const DELETE_TASK = "tasks/DELETE_TASK";
+
+const deleteTask = (taskId) => ({
+	type: DELETE_TASK,
+	taskId
+})
+
+export const trashTask = function (taskId) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/tasks/", {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ taskId })
+		})
+		const { errors } = await response.json();
+		if (!errors) {
+			dispatch(deleteTask(taskId));
+			return response;
+		} //TODO #22
 	}
 }
 
@@ -95,6 +117,9 @@ export default function reducer(stateDotTasks = {}, action) {
 		case POST_TASK:
 		case PATCH_TASK:
 			updatedState[action.task.id] = action.task;
+			return updatedState;
+		case DELETE_TASK:
+			delete updatedState[action.taskId];
 			return updatedState;
 		default:
 			return stateDotTasks;

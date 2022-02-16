@@ -51,4 +51,15 @@ router.patch("/", asyncHandler(async (req, res) => {
 	}
 }))
 
+router.delete("/", asyncHandler(async (req, res) => {
+	const { taskId } = req.body;
+	const task = await Task.findByPk(taskId);
+	if (task) {
+		await task.destroy();
+		return res.json({ errors: false });
+	} else {
+		return res.status(404).json({ errors: ["Task could not be found"] });
+	}
+}))
+
 module.exports = router;
