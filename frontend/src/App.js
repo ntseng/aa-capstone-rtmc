@@ -5,7 +5,7 @@ import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import { restoreUser } from './store/session';
 import Navigation from './components/Navigation';
-import TaskView from './components/TaskView';
+import AppPage from './components/AppPage';
 // import { Modal } from './components/Modal';
 function App() {
 	const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function App() {
 						<SignupFormPage />
 					</Route>
 					<Route path="/app">
-						{(user) ? <TaskView /> : <Redirect to='/login' />}
+						{(user) ? <AppPage /> : <Redirect to='/login' />}
 					</Route>
 				</Switch>
 			)}
