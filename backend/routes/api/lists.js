@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/:ownerId(\\d+)/", asyncHandler(async (req, res) => {
 	const { ownerId } = req.params;
-	const lists = await List.findAll({ ownerId });
+	const lists = await List.findAll({ where: { ownerId } });
 
 	return res.json({ lists });
 }))
