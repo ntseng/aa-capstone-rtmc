@@ -1,5 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+const { Op } = require("sequelize");
 
 const { Task } = require("../../db/models");
 
@@ -7,25 +8,24 @@ const router = express.Router();
 
 router.get("/:ownerId(\\d+)/:listId(\\d+)", asyncHandler(async (req, res) => {
 	const { ownerId, listId } = req.params;
-	const tasks = await Task.findAll({ ownerId });
-
+	const tasks = await Task.findAll({ where: { ownerId, listId: Number(listId) } });
 	return res.json({
-		tasks: tasks.filter(task => task.listId === Number(listId))
+		tasks
 	})
 }))
 
 router.get("/search/:ownerId(\\d+)/:searchTerm", asyncHandler(async (req, res) => {
 	const { ownerId, searchTerm } = req.params;
-	const tasks = await Task.findAll({ ownerId });
+	const tasks = await Task.findAll({ where: { ownerId, title: { [Op.iLike]: `%${searchTerm}%` } } });
 
 	return res.json({
-		tasks: tasks.filter(task => task.title?.includes(searchTerm))
+		tasks
 	})
 }))
 
 router.get("/:ownerId(\\d+)", asyncHandler(async (req, res) => {
 	const { ownerId } = req.params;
-	const tasks = await Task.findAll({ ownerId });
+	const tasks = await Task.findAll({ where: { ownerId } });
 
 	return res.json({
 		tasks
