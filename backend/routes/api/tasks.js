@@ -39,4 +39,16 @@ router.post("/", asyncHandler(async (req, res) => {
 	return res.json(task);
 }))
 
+router.patch("/", asyncHandler(async (req, res) => {
+	const { taskId, listId, title, done, notes } = req.body;
+	const task = await Task.findByPk(taskId);
+	if (task) {
+		await task.update({ listId, title, done, notes });
+		task.save();
+		return res.json(task);
+	} else {
+		return res.status(404).json({ errors: ["Task could not be found"] });
+	}
+}))
+
 module.exports = router;

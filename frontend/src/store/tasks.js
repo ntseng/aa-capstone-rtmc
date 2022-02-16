@@ -11,7 +11,7 @@ export const fetchAllTasks = function ({ ownerId }) {
 	return async dispatch => {
 		const response = await csrfFetch(`/api/tasks/${ownerId}`);
 		const { tasks } = await response.json();
-		dispatch(getTasks(tasks));
+		dispatch(getTasks(tasks)); //TODONOW handle !response.ok
 		return response;
 	}
 }
@@ -20,7 +20,7 @@ export const fetchTasksFromList = function ({ ownerId, listId }) {
 	return async dispatch => {
 		const response = await csrfFetch(`/api/tasks/${ownerId}/${listId}`);
 		const { tasks } = await response.json();
-		dispatch(getTasks(tasks));
+		dispatch(getTasks(tasks)); //TODO #22 handle !response.ok
 		return response;
 	}
 }
@@ -29,7 +29,7 @@ export const fetchSearchedTasks = function ({ ownerId, searchTerm }) {
 	return async dispatch => {
 		const response = await csrfFetch(`/api/tasks/search/${ownerId}/${searchTerm}`);
 		const { tasks } = await response.json();
-		dispatch(getTasks(tasks));
+		dispatch(getTasks(tasks)); //TODO #22
 		return response;
 	}
 }
@@ -53,7 +53,33 @@ export const createTask = function ({ ownerId, listId, title }) {
 			})
 		})
 		const task = await response.json();
-		dispatch(postTask(task));
+		dispatch(postTask(task)); //TODO #22
+		return response;
+	}
+}
+
+const PATCH_TASK = "tasks/PATCH_TASK";
+
+const patchTASK = (task) => ({
+	type: PATCH_TASK,
+	task
+})
+
+export const editTask = function ({ task, listId, title, done, notes }) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/tasks/", {
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				taskId: task.id,
+				listId: listId || task.listId,
+				title: title || task.title,
+				done: done || task.done,
+				notes: notes || task.notes
+			})
+		})
+		const updatedTask = await response.json();
+		dispatch(patchTASK(updatedTask)); //TODO #22
 		return response;
 	}
 }
@@ -67,6 +93,7 @@ export default function reducer(stateDotTasks = {}, action) {
 			})
 			return updatedState;
 		case POST_TASK:
+		case PATCH_TASK:
 			updatedState[action.task.id] = action.task;
 			return updatedState;
 		default:
