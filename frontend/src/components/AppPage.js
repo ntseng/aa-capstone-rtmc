@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchLists } from "../store/lists";
 import ListDetails from "./ListDetails";
+import ListView from "./ListView";
 import TaskView from "./TaskView";
 
 export default function AppPage({ user }) {
@@ -15,9 +16,9 @@ export default function AppPage({ user }) {
 	}, [dispatch, user.id])
 
 	return (<>
+		<ListView />
 		<TaskView user={user} listId={listId} />
 		<ListDetails listTitle={list?.title ? list.title : "All Tasks"} />
-		{/* TODO #52 check if entering url can be used to view other users' lists */}
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
 	</>)
 }

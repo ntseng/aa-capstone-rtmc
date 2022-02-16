@@ -173,10 +173,11 @@ export default function reducer(stateDotTasks = {}, action) {
 	let updatedState = { ...stateDotTasks };
 	switch (action.type) {
 		case GET_TASKS:
+			const cleanState = {};
 			action.tasks.forEach(task => {
-				updatedState[task.id] = task;
+				cleanState[task.id] = task;
 			})
-			return updatedState;
+			return cleanState;
 		case POST_TASK:
 		case PATCH_TASK:
 			updatedState[action.task.id] = action.task;
