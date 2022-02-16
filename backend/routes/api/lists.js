@@ -31,4 +31,15 @@ router.patch("/", asyncHandler(async (req, res) => {
 	}
 }))
 
+router.delete("/", asyncHandler(async (req, res) => {
+	const { listId } = req.body;
+	const list = await List.findByPk(listId);
+	if (list) {
+		await list.destroy();
+		return res.json({ errors: false });
+	} else {
+		return res.status(404).json({ errors: ["List could not be found."] });
+	}
+}))
+
 module.exports = router;

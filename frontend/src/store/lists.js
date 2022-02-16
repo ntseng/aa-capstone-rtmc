@@ -93,6 +93,36 @@ export const renameList = function ({ list, title }) {
 	}
 }
 
+const DELETE_LIST = "lists/DELETE_LIST";
+
+const deleteList = (listId) => ({
+	type: DELETE_LIST,
+	listId
+})
+
+export const trashList = function (listId) {
+	return async dispatch => {
+		const response = await csrfFetch("/api/lists/", {
+			method: "DELETE",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ listId })
+		}).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			dispatch(deleteList(listId));
+			return listId;
+		} else {
+			return response.errors;
+		}
+	}
+}
+
 export default function reducer(stateDotLists = {}, action) {
 	let updatedState = { ...stateDotLists };
 	switch (action.type) {
@@ -104,6 +134,9 @@ export default function reducer(stateDotLists = {}, action) {
 		case POST_LIST:
 		case PATCH_LIST:
 			updatedState[action.list.id] = action.list;
+			return updatedState;
+		case DELETE_LIST:
+			delete updatedState[action.listId];
 			return updatedState;
 		default:
 			return stateDotLists;
