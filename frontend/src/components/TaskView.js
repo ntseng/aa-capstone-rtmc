@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllTasks, createTask, trashTask } from "../store/tasks";
+import { fetchAllTasks, createTask, trashTask, editTask } from "../store/tasks";
 
 export default function TaskView() {
 	const dispatch = useDispatch();
@@ -13,6 +13,13 @@ export default function TaskView() {
 	useEffect(() => {
 		dispatch(fetchAllTasks({ ownerId: sessionUser.id }));
 	}, [dispatch, sessionUser.id])
+
+	function toggleComplete() {
+		dispatch(editTask({
+			task: tasks[selectedTaskId],
+			done: !showCompleted
+		}))
+	}
 
 	function removeTask() {
 		dispatch(trashTask(selectedTaskId));
@@ -33,13 +40,14 @@ export default function TaskView() {
 		>
 			<div id="completion-sort-container">
 				<span onClick={e => setShowCompleted(false)}>Incomplete</span>
-				<span onClick={e => setShowCompleted(true)}>Complete</span>
+				<span onClick={e => setShowCompleted(true)}>Completed</span>
 			</div>
 			<div id="task-action-container">
 				<button
 					disabled={selectedTaskId === null}
+					onClick={toggleComplete}
 				>
-					Complete
+					{`${showCompleted ? "Unc" : "C"}omplete`}
 				</button>
 				<button
 					disabled={selectedTaskId === null}
