@@ -35,6 +35,24 @@ module.exports = {
 				title: "Hobbies",
 				createdAt: new Date().toUTCString(),
 				updatedAt: new Date().toUTCString()
+			},
+			{
+				ownerId: 2,
+				title: "Inbox",
+				createdAt: new Date().toUTCString(),
+				updatedAt: new Date().toUTCString()
+			},
+			{
+				ownerId: 2,
+				title: "Work",
+				createdAt: new Date().toUTCString(),
+				updatedAt: new Date().toUTCString()
+			},
+			{
+				ownerId: 2,
+				title: "Personal",
+				createdAt: new Date().toUTCString(),
+				updatedAt: new Date().toUTCString()
 			}
 		])
 	},

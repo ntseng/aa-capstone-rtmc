@@ -9,6 +9,12 @@ module.exports = {
 				username: 'Demo-lition',
 				hashedPassword: bcrypt.hashSync('password'),
 				inboxId: 1
+			},
+			{
+				email: "alice@secret.io",
+				username: "Alice",
+				hashedPassword: bcrypt.hashSync("password"),
+				inboxId: 5
 			}
 		], {});
 	},

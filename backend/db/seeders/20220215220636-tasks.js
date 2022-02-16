@@ -47,6 +47,24 @@ module.exports = {
 				notes: "Don't forget the cute mascot!",
 				createdAt: new Date().toUTCString(),
 				updatedAt: new Date().toUTCString()
+			},
+			{
+				ownerId: 2,
+				listId: 5,
+				title: "Email Bob about Secret Stuff",
+				done: false,
+				notes: "",
+				createdAt: new Date().toUTCString(),
+				updatedAt: new Date().toUTCString()
+			},
+			{
+				ownerId: 2,
+				listId: 6,
+				title: "Protect accounts from Chuck and Eve",
+				done: false,
+				notes: "",
+				createdAt: new Date().toUTCString(),
+				updatedAt: new Date().toUTCString()
 			}
 		])
 	},
