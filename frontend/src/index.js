@@ -12,6 +12,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from './store/session';
 import * as taskActions from "./store/tasks.js";
+import * as listActions from "./store/lists.js";
 
 const store = configureStore();
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
 	window.store = store;
 	window.sessionActions = sessionActions;
 	window.taskActions = taskActions;
+	window.listActions = listActions;
 }
 
 function Root() {
