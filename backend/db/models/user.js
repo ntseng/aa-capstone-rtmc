@@ -74,7 +74,10 @@ module.exports = (sequelize, DataTypes) => {
 					len: [60, 60],
 				},
 			},
-			//TODO #20 store id of Inbox list per user
+			inboxId: {
+				type: DataTypes.INTEGER,
+				allowNull: false
+			}
 		},
 		{
 			sequelize,
