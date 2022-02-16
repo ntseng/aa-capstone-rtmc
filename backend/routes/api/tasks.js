@@ -36,7 +36,7 @@ router.post("/", asyncHandler(async (req, res) => {
 	const { ownerId, listId, title } = req.body;
 	const task = await Task.create({ ownerId, listId, title, done: false, notes: "" });
 
-	return res.json(task);
+	return res.json({ task });
 }))
 
 router.patch("/", asyncHandler(async (req, res) => {
@@ -45,7 +45,7 @@ router.patch("/", asyncHandler(async (req, res) => {
 	if (task) {
 		await task.update({ listId, title, done, notes });
 		task.save();
-		return res.json(task);
+		return res.json({ task });
 	} else {
 		return res.status(404).json({ errors: ["Task could not be found"] });
 	}

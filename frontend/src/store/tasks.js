@@ -9,28 +9,61 @@ const getTasks = (tasks) => ({
 
 export const fetchAllTasks = function ({ ownerId }) {
 	return async dispatch => {
-		const response = await csrfFetch(`/api/tasks/${ownerId}`);
-		const { tasks } = await response.json();
-		dispatch(getTasks(tasks)); //TODONOW handle !response.ok
-		return response;
+		const response = await csrfFetch(`/api/tasks/${ownerId}`).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { tasks } = await response.json();
+			dispatch(getTasks(tasks));
+			return tasks;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
 export const fetchTasksFromList = function ({ ownerId, listId }) {
 	return async dispatch => {
-		const response = await csrfFetch(`/api/tasks/${ownerId}/${listId}`);
-		const { tasks } = await response.json();
-		dispatch(getTasks(tasks)); //TODO #22 handle !response.ok
-		return response;
+		const response = await csrfFetch(`/api/tasks/${ownerId}/${listId}`).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { tasks } = await response.json();
+			dispatch(getTasks(tasks));
+			return tasks;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
 export const fetchSearchedTasks = function ({ ownerId, searchTerm }) {
 	return async dispatch => {
-		const response = await csrfFetch(`/api/tasks/search/${ownerId}/${searchTerm}`);
-		const { tasks } = await response.json();
-		dispatch(getTasks(tasks)); //TODO #22
-		return response;
+		const response = await csrfFetch(`/api/tasks/search/${ownerId}/${searchTerm}`).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { tasks } = await response.json();
+			dispatch(getTasks(tasks));
+			return tasks;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
@@ -51,10 +84,21 @@ export const createTask = function ({ ownerId, listId, title }) {
 				listId,
 				title
 			})
-		})
-		const task = await response.json();
-		dispatch(postTask(task)); //TODO #22
-		return response;
+		}).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { task } = await response.json();
+			dispatch(postTask(task));
+			return response;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
@@ -77,10 +121,21 @@ export const editTask = function ({ task, listId, title, done, notes }) {
 				done: done || task.done,
 				notes: notes || task.notes
 			})
-		})
-		const updatedTask = await response.json();
-		dispatch(patchTask(updatedTask)); //TODO #22
-		return response;
+		}).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
+			return response;
+		});
+		if (!response.errors) {
+			const { task: updatedTask } = await response.json();
+			dispatch(patchTask(updatedTask));
+			return updatedTask;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
@@ -97,12 +152,20 @@ export const trashTask = function (taskId) {
 			method: "DELETE",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({ taskId })
-		})
-		const { errors } = await response.json();
-		if (!errors) {
-			dispatch(deleteTask(taskId));
+		}).catch(async response => {
+			if (response.status < 500) {
+				response.errors = (await response.json()).errors;
+			} else {
+				response.errors = ['An error occured. Please try again.'];
+			}
 			return response;
-		} //TODO #22
+		});
+		if (!response.errors) {
+			dispatch(deleteTask(taskId));
+			return taskId;
+		} else {
+			return response.errors;
+		}
 	}
 }
 
