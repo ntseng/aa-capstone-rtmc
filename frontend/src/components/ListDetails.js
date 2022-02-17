@@ -18,12 +18,12 @@ export default function ListDetails({ listTitle }) {
 		<div id="list-counters-div">
 			<span className="task-counter-container">
 				<div className="task-counter-number" id="task-count">{taskCount}</div>
-				{`task${taskCount === 1 ? "" : "s"}`}
+				<div className="task-counter-label">{`task${taskCount === 1 ? "" : "s"}`}</div>
 			</span>
 			{/* TODO #67 add overdue counter */}
 			<span className="task-counter-container">
 				<div className="task-counter-number" id="done-count">{doneCount}</div>
-				completed
+				<div className="task-counter-label" id="done-count">completed</div>
 			</span>
 		</div>
 		<AppFooter />
