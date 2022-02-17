@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTask } from "../store/selectedTask";
 import { fetchAllTasks, createTask, trashTask, editTask, fetchTasksFromList } from "../store/tasks";
 
 export default function TaskView({ user, listId }) {
@@ -39,7 +40,10 @@ export default function TaskView({ user, listId }) {
 
 	return (
 		<div id="task-view-container"
-			onClick={e => setSelectedTaskId(null)}
+			onClick={e => {
+				setSelectedTaskId(null)
+				dispatch(selectTask(null))
+			}}
 		>
 			<div id="completion-sort-container">
 				<span onClick={e => setShowCompleted(false)}>Incomplete</span>
@@ -74,7 +78,10 @@ export default function TaskView({ user, listId }) {
 							<div key={index}>
 								<input type="checkbox"
 									checked={selectedTaskId === task.id}
-									onChange={e => setSelectedTaskId(task.id)} //TODO #66 allow toggle off by clicking same checkbox
+									onChange={e => {
+										setSelectedTaskId(task.id)
+										dispatch(selectTask(task))
+									}} //TODO #66 allow toggle off by clicking same checkbox
 								/>
 								{task.title}
 								{task.dueDate ? (<div>{new Date(task.dueDate).toDateString()}</div>) : (<></>)}

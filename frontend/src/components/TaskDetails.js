@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { editTask } from "../store/tasks";
 import "./css/TaskDetails.css";
 
-export default function TaskDetails({ taskId, lists }) {
+export default function TaskDetails({ lists }) {
 	const dispatch = useDispatch();
-	const task = useSelector(state => state.tasks[taskId]);
+	const task = useSelector(state => state.selectedTask);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
 
