@@ -1,7 +1,16 @@
-export default function TaskDetails({ task }) {
+import { useSelector, useDispatch } from "react-redux";
+import { editTask } from "../store/tasks";
+
+export default function TaskDetails({ taskId }) {
+	const dispatch = useDispatch();
+	const task = useSelector(state => state.tasks[taskId]);
+
 	return (<div>
 		<input type="text"
-			value={task.title}
+			defaultValue={task?.title}
+			onBlur={e => {
+				dispatch(editTask({ task, title: e.target.value }));
+			}}
 		/>
 		<div>due</div>
 		<input type="date" />
@@ -9,7 +18,7 @@ export default function TaskDetails({ task }) {
 		<input type="select" />
 		<h3>Notes</h3>
 		<input type="text"
-			value={task.notes}
+			defaultValue={task?.notes}
 		/>
 	</div>)
 }

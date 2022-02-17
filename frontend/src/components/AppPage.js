@@ -17,13 +17,13 @@ export default function AppPage({ user }) {
 		dispatch(fetchLists({ ownerId: user.id }));
 	}, [dispatch, user.id])
 
-	let task = { listId: 1, title: "test task", done: false, notes: "notes go here" }; //TODO provide selected task
 	return (<>
 		<ListView />
 		<TaskView user={user} listId={listId} />
 		<ListDetails listTitle={list?.title ? list.title : "All Tasks"} />
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
-		<TaskDetails task={task} />
+		<TaskDetails taskId={1} />
+		{/* TODONOW provide selected task */}
 		<AppFooter />
 	</>)
 }
