@@ -100,7 +100,7 @@ const deleteList = (listId) => ({
 	listId
 })
 
-export const trashList = function (listId) {
+export const trashList = function ({ listId, ownerId, inboxId }) {
 	return async dispatch => {
 		const response = await csrfFetch("/api/lists/", {
 			method: "DELETE",
@@ -116,6 +116,22 @@ export const trashList = function (listId) {
 		});
 		if (!response.errors) {
 			dispatch(deleteList(listId));
+			const fetchTasks = await csrfFetch(`/api/tasks/${ownerId}/${listId}`);
+			const { tasks } = await fetchTasks.json();
+			tasks.forEach(async task => {
+				await csrfFetch("/api/tasks/", {
+					method: "PATCH",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						taskId: task.id,
+						listId: inboxId,
+						title: task.title,
+						done: task.done,
+						dueDate: task.dueDate,
+						notes: task.notes
+					})
+				})
+			})
 			return listId;
 		} else {
 			return response.errors;
