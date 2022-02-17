@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 		listId: DataTypes.INTEGER,
 		title: DataTypes.STRING,
 		done: DataTypes.BOOLEAN,
+		dueDate: DataTypes.DATE,
 		notes: DataTypes.STRING
 	}, {
 		sequelize,
