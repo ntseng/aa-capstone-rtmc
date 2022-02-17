@@ -16,7 +16,7 @@ Time to completion:
 
 ## Links
 - [Live Site](https://aa-capstone.herokuapp.com/)
-- [Scorecard](https://docs.google.com/spreadsheets/d/1q0Si8iOlSxLZ8mbcJQUrQwm-4LoPyUtGMN8frIeQGcA/)
+- [Scorecard](https://docs.google.com/spreadsheets/d/1oUYEFjFufv3GhipZB3FYK4PMajOvvq6wDjri6ycO6PM/)
 - [DB Schema](https://github.com/ntseng/aa-capstone/wiki/DB-Schema)
 - [Feature List](https://github.com/ntseng/aa-capstone/wiki/Feature-List)
 - [Technology List](https://github.com/ntseng/aa-capstone/wiki/Technology-List)
