@@ -26,9 +26,9 @@ export default function TaskDetails({ taskId, lists }) {
 		<select
 			onBlur={e => dispatch(editTask({ task, listId: e.target.value }))}
 		>
-			{Object.values(lists).map(list => {
+			{Object.values(lists).map((list, index) => {
 				return (
-					<option value={list.id}>{list.title}</option>
+					<option key={index} value={list.id}>{list.title}</option>
 				)
 			})}
 		</select>
