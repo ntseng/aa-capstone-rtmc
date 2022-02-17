@@ -41,16 +41,57 @@ export const restoreUser = () => async dispatch => {
 
 export const signup = (user) => async (dispatch) => {
 	const { username, email, password } = user;
+	const inboxResponse = await csrfFetch("/api/lists/", {
+		method: "POST",
+		body: JSON.stringify({
+			ownerId: null,
+			title: "Inbox"
+		})
+	})
+	const { list: inbox } = await inboxResponse.json();
 	const response = await csrfFetch("/api/users", {
 		method: "POST",
 		body: JSON.stringify({
 			username,
 			email,
 			password,
+			inboxId: inbox.id
 		}),
 	});
 	const data = await response.json();
 	dispatch(setUser(data.user));
+	await csrfFetch("/api/lists/", {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			listId: inbox.id,
+			ownerId: data.user.id
+		})
+	})
+
+	await csrfFetch("/api/lists/", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			ownerId: data.user.id,
+			title: "Work"
+		})
+	})
+	await csrfFetch("/api/lists/", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			ownerId: data.user.id,
+			title: "Personal"
+		})
+	})
+
 	return response;
 };
 

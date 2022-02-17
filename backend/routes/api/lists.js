@@ -20,10 +20,14 @@ router.post("/", asyncHandler(async (req, res) => {
 }))
 
 router.patch("/", asyncHandler(async (req, res) => {
-	const { listId, title } = req.body;
+	const { listId, ownerId, title } = req.body;
 	const list = await List.findByPk(listId);
 	if (list) {
-		await list.update({ title });
+		if (ownerId) {
+			await list.update({ ownerId });
+		} else {
+			await list.update({ title });
+		}
 		list.save();
 		return res.json({ list });
 	} else {
