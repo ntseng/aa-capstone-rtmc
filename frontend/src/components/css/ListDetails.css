@@ -57,5 +57,11 @@
 }
 
 #done-count {
+	color: rgba(0,0,0,0.4);
+}
 
+.task-counter-label {
+	font-size: 0.75rem;
+	padding-top: 2px;
+	font-family: "Segoe UI",Arial,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"!important;
 }
