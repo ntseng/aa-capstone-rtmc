@@ -21,7 +21,6 @@ export default function AppPage({ user }) {
 		<TaskView user={user} listId={listId} />
 		<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
-		<TaskDetails taskId={1} lists={lists} />
-		{/* TODONOW provide selected task */}
+		<TaskDetails lists={lists} />
 	</>)
 }
