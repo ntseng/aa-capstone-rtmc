@@ -1,0 +1,61 @@
+#list-details-container {
+	z-index: 0;
+	left: 58%;
+	width: 42%;
+	background-color: #e4eef8;
+	margin-left: -3px;
+	padding-left: 3px;
+	height: auto;
+	bottom: 12px;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 6px;
+	position: absolute;
+	top: 9px;
+}
+
+#list-title-div {
+	max-width: calc(100% - 25px - 6px);
+	margin: 34px 6px 0 24px;
+	display: inline-block;
+	vertical-align: bottom;
+	outline: hidden;
+	overflow: hidden;
+	font-size: 1.125rem;
+	text-overflow: ellipsis;
+	padding: 1px;
+	line-height: 1.375rem;
+	font-family: "Segoe UI",Arial,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"!important;
+}
+
+#list-counters-div {
+	position: relative;
+	overflow: hidden;
+	margin: 13px 0 0 27px;
+	white-space: nowrap;
+	display: block;
+}
+
+.task-counter-container {
+	box-sizing: content-box;
+	background-color: #dbe8f6;
+	vertical-align: top;
+	display: inline-block;
+	padding: 9px 13px;
+	margin-right: 5px;
+	height: 35px;
+	font-size: .8125rem;
+}
+
+.task-counter-number {
+	font-weight: 600;
+	font-size: 1.1875rem;
+	line-height: 100%;
+}
+
+#task-count {
+	color: #0060bf;
+}
+
+#done-count {
+
+}

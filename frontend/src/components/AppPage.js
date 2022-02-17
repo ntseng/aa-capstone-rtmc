@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchLists } from "../store/lists";
-import AppFooter from "./AppFooter";
 import ListDetails from "./ListDetails";
 import ListView from "./ListView";
 import TaskDetails from "./TaskDetails";
@@ -24,6 +23,5 @@ export default function AppPage({ user }) {
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
 		<TaskDetails taskId={1} lists={lists} />
 		{/* TODONOW provide selected task */}
-		<AppFooter />
 	</>)
 }
