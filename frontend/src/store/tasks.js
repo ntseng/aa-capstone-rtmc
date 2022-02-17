@@ -118,9 +118,9 @@ export const editTask = function ({ task, listId, title, done, dueDate, notes })
 				taskId: task.id,
 				listId: listId || task.listId,
 				title: title || task.title,
-				done: done !== undefined ? done : task.done,
-				dueDate: dueDate || task.dueDate,
-				notes: notes || task.notes
+				done: done ?? task.done,
+				dueDate: dueDate !== undefined ? dueDate : task.dueDate,
+				notes: notes ?? task.notes
 			})
 		}).catch(async response => {
 			if (response.status < 500) {
