@@ -25,6 +25,9 @@ module.exports = {
 				allowNull: false,
 				default: false
 			},
+			dueDate: {
+				type: Sequelize.DATE
+			},
 			notes: {
 				type: Sequelize.STRING
 			},
