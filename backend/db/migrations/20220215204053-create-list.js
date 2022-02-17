@@ -10,8 +10,7 @@ module.exports = {
 			},
 			ownerId: {
 				references: { model: "Users" },
-				type: Sequelize.INTEGER,
-				allowNull: false
+				type: Sequelize.INTEGER
 			},
 			title: {
 				allowNull: false,
