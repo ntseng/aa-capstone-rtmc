@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editTask } from "../store/tasks";
+import "./css/TaskDetails.css";
 
 export default function TaskDetails({ taskId, lists }) {
 	const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export default function TaskDetails({ taskId, lists }) {
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
 
-	return (<div>
+	return (<div id="task-details-container">
 		<input type="text"
 			defaultValue={task?.title}
 			onBlur={e => dispatch(editTask({ task, title: e.target.value }))}

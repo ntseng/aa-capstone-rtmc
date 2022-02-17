@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux"
+import AppFooter from "./AppFooter";
+import "./css/ListDetails.css";
 
 export default function ListDetails({ listTitle }) {
 	const tasks = useSelector(state => state.tasks);
@@ -11,16 +13,19 @@ export default function ListDetails({ listTitle }) {
 			taskCount++;
 		}
 	}
-	return (<>
-		<div>{listTitle}</div>
-		<span>
-			<div>{taskCount}</div>
-			{`task${taskCount === 1 ? "" : "s"}`}
-		</span>
-		{/* TODO #67 add overdue counter */}
-		<span>
-			<div>{doneCount}</div>
-			completed
-		</span>
-	</>)
+	return (<div id="list-details-container">
+		<div id="list-title-div">{listTitle}</div>
+		<div id="list-counters-div">
+			<span className="task-counter-container">
+				<div className="task-counter-number" id="task-count">{taskCount}</div>
+				{`task${taskCount === 1 ? "" : "s"}`}
+			</span>
+			{/* TODO #67 add overdue counter */}
+			<span className="task-counter-container">
+				<div className="task-counter-number" id="done-count">{doneCount}</div>
+				completed
+			</span>
+		</div>
+		<AppFooter />
+	</div>)
 }

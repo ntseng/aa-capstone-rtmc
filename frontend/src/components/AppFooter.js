@@ -21,7 +21,6 @@ export default function AppFooter() {
 			<li className="app-footer-li">
 				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://github.com/ntseng/aa-capstone/wiki/User-Stories">User Stories</a>
 			</li>
-
 		</ul>
 		<div id="app-footer-copyright">○ 2022 Remember the Milk Clone</div>
 	</div>)
