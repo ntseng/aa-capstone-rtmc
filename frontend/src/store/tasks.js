@@ -109,7 +109,7 @@ const patchTask = (task) => ({
 	task
 })
 
-export const editTask = function ({ task, listId, title, done, notes }) {
+export const editTask = function ({ task, listId, title, done, dueDate, notes }) {
 	return async dispatch => {
 		const response = await csrfFetch("/api/tasks/", {
 			method: "PATCH",
@@ -118,8 +118,9 @@ export const editTask = function ({ task, listId, title, done, notes }) {
 				taskId: task.id,
 				listId: listId || task.listId,
 				title: title || task.title,
-				done: done !== undefined ? done : task.done,
-				notes: notes || task.notes
+				done: done ?? task.done,
+				dueDate: dueDate !== undefined ? dueDate : task.dueDate,
+				notes: notes ?? task.notes
 			})
 		}).catch(async response => {
 			if (response.status < 500) {

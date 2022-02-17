@@ -74,9 +74,10 @@ export default function TaskView({ user, listId }) {
 							<div key={index}>
 								<input type="checkbox"
 									checked={selectedTaskId === task.id}
-									onChange={e => setSelectedTaskId(task.id)}
+									onChange={e => setSelectedTaskId(task.id)} //TODO #66 allow toggle off by clicking same checkbox
 								/>
 								{task.title}
+								{/* TODO #68 add due date */}
 							</div>
 						);
 					})
