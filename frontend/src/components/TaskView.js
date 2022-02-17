@@ -77,6 +77,7 @@ export default function TaskView({ user, listId }) {
 									onChange={e => setSelectedTaskId(task.id)} //TODO #66 allow toggle off by clicking same checkbox
 								/>
 								{task.title}
+								{/* TODO #68 add due date */}
 							</div>
 						);
 					})

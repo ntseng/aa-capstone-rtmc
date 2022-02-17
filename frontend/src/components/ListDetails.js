@@ -17,6 +17,7 @@ export default function ListDetails({ listTitle }) {
 			<div>{taskCount}</div>
 			{`task${taskCount === 1 ? "" : "s"}`}
 		</span>
+		{/* TODO #67 add overdue counter */}
 		<span>
 			<div>{doneCount}</div>
 			completed

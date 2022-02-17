@@ -40,10 +40,10 @@ router.post("/", asyncHandler(async (req, res) => {
 }))
 
 router.patch("/", asyncHandler(async (req, res) => {
-	const { taskId, listId, title, done, notes } = req.body;
+	const { taskId, listId, title, done, dueDate, notes } = req.body;
 	const task = await Task.findByPk(taskId);
 	if (task) {
-		await task.update({ listId, title, done, notes });
+		await task.update({ listId, title, done, dueDate, notes });
 		task.save();
 		return res.json({ task });
 	} else {
