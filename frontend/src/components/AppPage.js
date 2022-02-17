@@ -18,7 +18,7 @@ export default function AppPage({ user }) {
 	}, [dispatch, user.id])
 
 	return (<>
-		<ListView />
+		<ListView inboxId={user?.inboxId} ownerId={user.id} />
 		<TaskView user={user} listId={listId} />
 		<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
