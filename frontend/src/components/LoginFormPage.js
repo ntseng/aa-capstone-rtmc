@@ -13,7 +13,7 @@ function LoginFormPage() {
 
 	if (sessionUser) return <Redirect to="/" />;
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e) => { //TODO #61 after sign-in redirect to /app/all
 		e.preventDefault();
 		setErrors([]);
 		return dispatch(login({ credential, password }))
