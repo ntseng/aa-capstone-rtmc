@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editTask } from "../store/tasks";
 
-export default function TaskDetails({ taskId }) {
+export default function TaskDetails({ taskId, lists }) {
 	const dispatch = useDispatch();
 	const task = useSelector(state => state.tasks[taskId]);
 	const [notesBackup, setNotesBackup] = useState("");
@@ -19,11 +19,19 @@ export default function TaskDetails({ taskId }) {
 			onBlur={e => dispatch(editTask({ task, dueDate: e.target.value }))}
 		/>
 		<button
-			disabled={!task.dueDate}
+			disabled={!task?.dueDate}
 			onClick={e => dispatch(editTask({ task, dueDate: null }))}
 		>Delete Due Date</button>
 		<div>list</div>
-		<input type="select" />
+		<select
+			onBlur={e => dispatch(editTask({ task, listId: e.target.value }))}
+		>
+			{Object.values(lists).map(list => {
+				return (
+					<option value={list.id}>{list.title}</option>
+				)
+			})}
+		</select>
 		<h3>Notes</h3>
 		{task?.notes ?
 			(<div>

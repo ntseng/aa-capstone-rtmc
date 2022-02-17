@@ -11,7 +11,7 @@ import TaskView from "./TaskView";
 export default function AppPage({ user }) {
 	const { listId } = useParams();
 	const dispatch = useDispatch();
-	const list = useSelector(state => state.lists[listId]);
+	const lists = useSelector(state => state.lists);
 
 	useEffect(() => {
 		dispatch(fetchLists({ ownerId: user.id }));
@@ -20,9 +20,9 @@ export default function AppPage({ user }) {
 	return (<>
 		<ListView />
 		<TaskView user={user} listId={listId} />
-		<ListDetails listTitle={list?.title ? list.title : "All Tasks"} />
+		<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
 		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
-		<TaskDetails taskId={1} />
+		<TaskDetails taskId={1} lists={lists} />
 		{/* TODONOW provide selected task */}
 		<AppFooter />
 	</>)
