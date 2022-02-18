@@ -24,7 +24,6 @@
 	text-overflow: ellipsis;
 	padding: 1px;
 	line-height: 1.375rem;
-	font-family: "Segoe UI",Arial,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"!important;
 }
 
 #list-counters-div {
@@ -43,7 +42,6 @@
 	padding: 9px 13px;
 	margin-right: 5px;
 	height: 35px;
-	font-size: .8125rem;
 }
 
 .task-counter-number {
@@ -63,5 +61,4 @@
 .task-counter-label {
 	font-size: 0.75rem;
 	padding-top: 2px;
-	font-family: "Segoe UI",Arial,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"!important;
 }
