@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { selectTask } from "../store/selectedTask";
 import { editTask } from "../store/tasks";
 import "./css/TaskDetails.css";
 
@@ -10,8 +11,7 @@ export default function TaskDetails({ lists }) {
 	const [notes, setNotes] = useState(task?.notes || "");
 
 	return (<div id="task-details-container" className={task ? "slide" : "not-slide"}>
-		{/* TODO #90 close task details functionality */}
-		<button id="close-task-details">close x</button>
+		<button id="close-task-details" onClick={e => dispatch(selectTask(null))}>close x</button>
 		<input id="task-title"
 			type="text"
 			defaultValue={task?.title}
@@ -66,7 +66,7 @@ export default function TaskDetails({ lists }) {
 						setNotes("");
 					}}
 				>Save</button>
-				<button id ="notes-cancel-button"
+				<button id="notes-cancel-button"
 					disabled={!notes}
 					onClick={e => {
 						dispatch(editTask({ task, notes: notesBackup }));
