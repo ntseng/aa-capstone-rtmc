@@ -54,13 +54,13 @@ export default function TaskView({ user, listId }) {
 					disabled={selectedTaskId === null}
 					onClick={toggleComplete}
 				>
-					{`${showCompleted ? "Unc" : "C"}omplete`}
+					{showCompleted ? (<i className="fa-solid fa-rotate-left" />) : (<i className="fa-solid fa-check" />)}
 				</button>
 				<button
 					disabled={selectedTaskId === null}
 					onClick={removeTask}
 				>
-					Delete
+					<i className="fa-solid fa-trash-can" />
 				</button>
 			</div>
 			<div id="task-creation-container">

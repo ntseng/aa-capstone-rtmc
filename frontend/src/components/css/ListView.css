@@ -4,11 +4,35 @@
 }
 
 .list-view-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.list-link {
 	text-decoration: none;
 	color: black;
+	font-size: 14pt;
 }
 
 .active {
 	color: #0060bf;
 	font-weight: 600;
+}
+
+.list-button {
+	border: 2px solid #7AB2E0;
+	border-radius: 5px;
+	box-sizing: content-box;
+	padding: 2px 2px;
+	height: 15px;
+	width: 15px;
+	margin: 2px 2px;
+	background-color: #d7e7f5;
+	color: #7AB2E0;
+}
+
+.list-button:hover {
+	cursor: pointer;
+	background-color: #7AB2E0;
+	color: #d7e7f5;
 }
