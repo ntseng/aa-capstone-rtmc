@@ -21,6 +21,15 @@
 	border: none;
 	outline: none;
 	color: white;
+	border-radius: 3px;
+}
+
+.fa-magnifying-glass{
+	position: absolute;
+	color: rgba(255,255,255,0.7);
+	font-size: 16pt;
+	top: 10px;
+	left: 4px;
 }
 
 #search-nav-actions {

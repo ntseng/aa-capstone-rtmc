@@ -20,9 +20,11 @@ export default function TaskDetails({ lists }) {
 			onBlur={e => dispatch(editTask({ task, dueDate: e.target.value }))}
 		/>
 		<button
-			disabled={!task?.dueDate}
+			hidden={!task?.dueDate}
 			onClick={e => dispatch(editTask({ task, dueDate: null }))}
-		>Delete Due Date</button>
+		>
+			<i className="fa-solid fa-trash-can" />
+		</button>
 		<div>list</div>
 		<select
 			onBlur={e => dispatch(editTask({ task, listId: e.target.value }))}
