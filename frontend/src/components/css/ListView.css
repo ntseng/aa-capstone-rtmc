@@ -1,0 +1,14 @@
+#list-view-container {
+	height: 100%;
+	width: 16%;
+}
+
+.list-view-item {
+	text-decoration: none;
+	color: black;
+}
+
+.active {
+	color: #0060bf;
+	font-weight: 600;
+}
