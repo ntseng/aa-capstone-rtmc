@@ -5,7 +5,7 @@ import "./css/TaskDetails.css";
 
 export default function TaskDetails({ lists }) {
 	const dispatch = useDispatch();
-	const task = useSelector(state => state.selectedTask); //TODO #82 desync with state.tasks after editTask
+	const task = useSelector(state => state.tasks[state.selectedTask?.id]);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
 
@@ -48,6 +48,7 @@ export default function TaskDetails({ lists }) {
 					setNotesBackup(task.notes);
 					dispatch(editTask({ task, notes: "" }));
 				}}>Edit</span>
+				{/* TODO #93 style notes edit/delete elements */}
 				<span onClick={e => dispatch(editTask({ task, notes: "" }))}>Delete</span>
 			</div>)
 			:
