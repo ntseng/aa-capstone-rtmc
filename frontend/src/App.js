@@ -19,7 +19,6 @@ function App() {
 
 	return (
 		<>
-			<Navigation isLoaded={isLoaded} />
 			{/* <button onClick={() => setShowModal(true)}>Modal</button> */}
 			{/* {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -36,6 +35,9 @@ function App() {
 					</Route>
 					<Route path="/app/:listId">
 						{(user) ? <AppPage user={user} /> : <Redirect to='/login' />}
+					</Route>
+					<Route>
+						<Navigation isLoaded={isLoaded} />
 					</Route>
 				</Switch>
 			)}
