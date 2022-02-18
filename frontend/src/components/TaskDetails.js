@@ -5,7 +5,7 @@ import "./css/TaskDetails.css";
 
 export default function TaskDetails({ lists }) {
 	const dispatch = useDispatch();
-	const task = useSelector(state => state.selectedTask);
+	const task = useSelector(state => state.selectedTask); //TODO #82 desync with state.tasks after editTask
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
 
