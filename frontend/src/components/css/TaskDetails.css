@@ -1,2 +1,109 @@
 #task-details-container {
+	background-color: white;
+	width: 41%;
+	height: 99%;
+	margin-top: 0.5%;
+	border-radius: 5px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.not-slide {
+	position: fixed;
+	right: -50%;
+}
+
+.slide {
+	position: fixed;
+	transition: 1s;
+	right: 1.2%;
+}
+
+#close-task-details {
+	position: absolute;
+	right: 0;
+	border: none;
+	background-color: white;
+	padding: 10px;
+	color: grey;
+}
+
+#close-task-details:hover {
+	cursor: pointer;
+	color: black;
+}
+
+#task-title {
+	font-size: 24pt;
+	width: 70%;
+	margin-top: 30px;
+	font-size: large;
+	border: none;
+	border: 1px solid transparent;
+}
+
+#task-title:hover {
+	border: 1px solid grey;
+}
+
+#due-label {
+	margin-top: 20px;
+}
+
+#due-input {
+	border: none;
+	border: 1px solid transparent;
+}
+
+#due-input:hover {
+	border: 1px solid grey;
+}
+
+#trash-due-date-button {
+	border: none;
+	background-color: white;
+	color: grey;
+}
+
+#trash-due-date-button:hover {
+	cursor: pointer;
+	color: black;
+}
+
+#list-label {
+	margin-top: 20px;
+}
+
+#notes-label {
+	font-size: 16pt;
+	border-bottom: 1px solid grey;
+	margin-top: 30px;
+}
+
+#notes-input {
+	width: 100%;
+	margin-top: 10px;
+	font-size: 12pt;
+	padding: 4px;
+	margin-bottom: 10px;
+}
+
+#notes-save-button {
+	background-color: #2e8ceb;
+	border: none;
+	color: white;
+	height: 32px;
+	font-size: .875rem;
+	min-width: 70px;
+	margin: 4px;
+	border-radius: 3px;
+}
+
+#notes-cancel-button {
+	border: 1px solid #c7cacd;
+	height: 32px;
+	font-size: .875rem;
+	min-width: 70px;
+	margin: 4px;
+	border-radius: 3px;
 }
