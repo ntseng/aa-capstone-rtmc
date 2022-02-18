@@ -1,0 +1,28 @@
+#navbar {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	margin-top: 0;
+	background-color: #0060bf;
+	height: 40px;
+	display: block;
+}
+
+#search-div {
+	position: absolute;
+	left: 16%;
+	padding-top: 5px;
+}
+
+#search-input {
+	background-color: rgba(255,255,255,0.2);
+	width: 237px;
+	height: 30px;
+	border: none;
+	outline: none;
+}
+
+#navbar-profile {
+	position: absolute;
+	right: 0%;
+}

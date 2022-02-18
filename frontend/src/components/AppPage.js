@@ -7,6 +7,7 @@ import ListView from "./ListView";
 import SearchBar from "./SearchBar";
 import TaskDetails from "./TaskDetails";
 import TaskView from "./TaskView";
+import "./css/AppPage.css";
 
 export default function AppPage({ user }) {
 	const { listId } = useParams();
@@ -18,11 +19,13 @@ export default function AppPage({ user }) {
 	}, [dispatch, user.id])
 
 	return (<>
-		<SearchBar user={user}/>
-		<ListView inboxId={user?.inboxId} ownerId={user.id} />
-		<TaskView user={user} listId={listId} />
-		<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
-		{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
-		<TaskDetails lists={lists} />
+		<SearchBar user={user} />
+		<div id="app-container">
+			<ListView inboxId={user?.inboxId} ownerId={user.id} />
+			<TaskView user={user} listId={listId} />
+			<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
+			{/* TODO #53 fix bad list id in url being labeled "All Tasks" */}
+			<TaskDetails lists={lists} />
+		</div>
 	</>)
 }
