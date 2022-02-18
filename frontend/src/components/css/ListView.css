@@ -1,6 +1,7 @@
 #list-view-container {
 	height: 100%;
-	width: 16%;
+	width: 15%;
+	margin-right: 1%;
 }
 
 .list-view-item {
@@ -11,7 +12,7 @@
 .list-link {
 	text-decoration: none;
 	color: black;
-	font-size: 14pt;
+	font-size: 18pt;
 }
 
 .active {

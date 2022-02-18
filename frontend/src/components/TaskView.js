@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTask } from "../store/selectedTask";
 import { fetchAllTasks, createTask, trashTask, editTask, fetchTasksFromList } from "../store/tasks";
+import "./css/TaskView.css";
 
 export default function TaskView({ user, listId }) {
 	const dispatch = useDispatch();
