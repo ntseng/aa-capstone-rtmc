@@ -80,9 +80,14 @@ export default function TaskView({ user, listId }) {
 								<input type="checkbox"
 									checked={selectedTaskId === task.id}
 									onChange={e => {
-										setSelectedTaskId(task.id)
-										dispatch(selectTask(task))
-									}} //TODO #66 allow toggle off by clicking same checkbox
+										if (e.target.checked) {
+											setSelectedTaskId(task.id);
+											dispatch(selectTask(task));
+										} else {
+											setSelectedTaskId(null);
+											dispatch(selectTask(null));
+										}
+									}}
 								/>
 								<span className="task-summary">
 									{task.title}
