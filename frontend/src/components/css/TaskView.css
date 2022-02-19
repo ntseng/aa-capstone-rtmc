@@ -3,3 +3,36 @@
 	width: 42%;
 	margin-top: 0.5%;
 }
+
+#completion-sort-container {
+	padding-top: 23px;
+	margin-bottom: 1px;
+}
+
+.completion-link {
+	border: 1px dotted transparent;
+	border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+	border-color: #e5e5e5;
+}
+
+#task-action-container {
+	border-top: 1px dotted #e5e5e5;
+}
+
+.task-action-button {
+	background-color: white;
+	border: 1px solid grey;
+	margin: 10px;
+}
+
+#add-task-button {
+	background-color: #2e8ceb;
+	border: none;
+	color: white;
+	height: 32px;
+	font-size: .875rem;
+	min-width: 70px;
+	margin: 4px;
+	border-radius: 3px;
+}

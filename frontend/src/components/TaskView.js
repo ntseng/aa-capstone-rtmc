@@ -47,17 +47,17 @@ export default function TaskView({ user, listId }) {
 			}}
 		>
 			<div id="completion-sort-container">
-				<span onClick={e => setShowCompleted(false)}>Incomplete</span>
-				<span onClick={e => setShowCompleted(true)}>Completed</span>
+				<span className="completion-link" onClick={e => setShowCompleted(false)}>Incomplete</span>
+				<span className="completion-link" onClick={e => setShowCompleted(true)}>Completed</span>
 			</div>
 			<div id="task-action-container">
-				<button
+				<button className="task-action-button"
 					disabled={selectedTaskId === null}
 					onClick={toggleComplete}
 				>
 					{showCompleted ? (<i className="fa-solid fa-rotate-left" />) : (<i className="fa-solid fa-check" />)}
 				</button>
-				<button
+				<button className="task-action-button"
 					disabled={selectedTaskId === null}
 					onClick={removeTask}
 				>
@@ -70,7 +70,7 @@ export default function TaskView({ user, listId }) {
 					value={newTaskText}
 					onChange={e => setNewTaskText(e.target.value)}
 				/>
-				<button onClick={submitTask}>Add Task</button>
+				<button id="add-task-button" onClick={submitTask}>Add Task</button>
 			</div>
 			<div id="task-container">
 				{
@@ -84,7 +84,9 @@ export default function TaskView({ user, listId }) {
 										dispatch(selectTask(task))
 									}} //TODO #66 allow toggle off by clicking same checkbox
 								/>
-								{task.title}
+								<span className="task-summary">
+									{task.title}
+								</span>
 								{task.dueDate ? (<span>{new Date(task.dueDate).toDateString()}</span>) : (<></>)}
 							</div>
 						);
