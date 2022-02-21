@@ -69,7 +69,12 @@ export default function TaskView({ user, listId }) {
 					value={newTaskText}
 					onChange={e => setNewTaskText(e.target.value)}
 				/>
-				<button id="add-task-button" onClick={submitTask}>Add Task</button>
+				<div>
+					<button id="add-task-button"
+						hidden={!newTaskText}
+						onClick={submitTask}
+					>Add Task</button>
+				</div>
 			</div>
 			<div id="task-container">
 				{
