@@ -6,6 +6,7 @@ import { hideModal, showModal } from "../store/modal";
 import NewListModal from "./NewListModal";
 import RenameListModal from "./RenameListModal";
 import "./css/ListView.css";
+import { selectTask } from "../store/selectedTask";
 
 export default function ListView({ inboxId, ownerId }) {
 	const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function ListView({ inboxId, ownerId }) {
 				Object.values(lists).map((list, index) => {
 					return (<div className="list-view-item" key={index}>
 						{inboxId === list.id ? (<></>) : (<>
-							<NavLink className="list-link" to={`/app/${list.id}`}>
+							<NavLink className="list-link" to={`/app/${list.id}`} onClick={e => dispatch(selectTask(null))}>
 								{list.title}
 							</NavLink>
 							<div className="list-actions-container">
@@ -46,20 +47,23 @@ export default function ListView({ inboxId, ownerId }) {
 								</button>
 							</div>
 						</>
-						)}
+						)
+						}
 					</div>)
 				})
 			}
-		</ul>
+		</ul >
 		{modal === "newList" && (
 			<Modal onClose={() => dispatch(hideModal())}>
 				<NewListModal ownerId={ownerId} />
 			</Modal>
 		)}
-		{modal?.startsWith("renameList") && (
-			<Modal onClose={() => dispatch(hideModal())}>
-				<RenameListModal listId={modal.split("/")[1]} />
-			</Modal>
-		)}
-	</div>)
+		{
+			modal?.startsWith("renameList") && (
+				<Modal onClose={() => dispatch(hideModal())}>
+					<RenameListModal listId={modal.split("/")[1]} />
+				</Modal>
+			)
+		}
+	</div >)
 }
