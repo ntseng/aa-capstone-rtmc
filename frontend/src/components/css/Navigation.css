@@ -22,4 +22,12 @@
 	margin-top: 5px;
 	text-align: left;
 	padding: 5px;
+	font-size: 12pt;
+}
+
+#sign-out-button {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	line-height: 1.5rem;
 }
