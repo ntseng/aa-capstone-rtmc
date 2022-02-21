@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { login, demoLogin } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import './css/LoginForm.css';
 
 function LoginFormPage() {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const sessionUser = useSelector((state) => state.session.user);
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
@@ -13,14 +14,15 @@ function LoginFormPage() {
 
 	if (sessionUser) return <Redirect to="/" />;
 
-	const handleSubmit = (e) => { //TODO #61 after sign-in redirect to /app/all
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErrors([]);
-		return dispatch(login({ credential, password }))
-			.catch(async (res) => {
-				const data = await res.json();
-				if (data && data.errors) setErrors(data.errors);
-			});
+		return dispatch(login({ credential, password })).then(() => {
+			history.push("/app/all");
+		}).catch(async (res) => {
+			const data = await res.json();
+			if (data && data.errors) setErrors(data.errors);
+		});
 	};
 
 	return (
@@ -52,7 +54,7 @@ function LoginFormPage() {
 				</label>
 				<button type="submit">Log In</button>
 			</form>
-			<div onClick={e => dispatch(demoLogin())}>Demo Login</div>
+			<div onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</div>
 			<span>Don't have an account?</span>
 			<Link to="/signup">Create account</Link>
 		</>
