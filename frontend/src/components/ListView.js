@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { trashList } from "../store/lists";
 import { Modal } from './Modal';
-import NewListModal from "./NewListModal";
-import "./css/ListView.css";
 import { hideModal, showModal } from "../store/modal";
+import NewListModal from "./NewListModal";
+import RenameListModal from "./RenameListModal";
+import "./css/ListView.css";
 
 export default function ListView({ inboxId, ownerId }) {
 	const dispatch = useDispatch();
@@ -15,7 +16,9 @@ export default function ListView({ inboxId, ownerId }) {
 		<ul>
 			<div className="list-view-item">
 				<div className="list-link">Lists</div>
-				<button className="list-button" onClick={e => dispatch(showModal("newList"))}>
+				<button className="list-button"
+					onClick={e => dispatch(showModal("newList"))}
+				>
 					<i className="fa-solid fa-plus" />
 				</button>
 			</div>
@@ -33,8 +36,9 @@ export default function ListView({ inboxId, ownerId }) {
 								{list.title}
 							</NavLink>
 							<div className="list-actions-container">
-								{/* TODO #88 rename list button functionality */}
-								<button className="list-button">
+								<button className="list-button"
+									onClick={e => dispatch(showModal(`renameList/${list.id}`))}
+								>
 									<i className="fa-solid fa-pencil" />
 								</button>
 								<button className="list-button" onClick={e => dispatch(trashList({ listId: list.id, ownerId, inboxId }))}>
@@ -50,6 +54,11 @@ export default function ListView({ inboxId, ownerId }) {
 		{modal === "newList" && (
 			<Modal onClose={() => dispatch(hideModal())}>
 				<NewListModal ownerId={ownerId} />
+			</Modal>
+		)}
+		{modal?.startsWith("renameList") && (
+			<Modal onClose={() => dispatch(hideModal())}>
+				<RenameListModal listId={modal.split("/")[1]} />
 			</Modal>
 		)}
 	</div>)
