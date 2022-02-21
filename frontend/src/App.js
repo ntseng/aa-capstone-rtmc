@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { restoreUser } from './store/session';
 import Navigation from './components/Navigation';
 import AppPage from './components/AppPage';
+import Landing from './components/Landing';
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -20,9 +21,11 @@ function App() {
 			{isLoaded && (
 				<Switch>
 					<Route path="/login" >
+						<Navigation isLoaded={isLoaded} />
 						<LoginFormPage />
 					</Route>
 					<Route path='/signup'>
+						<Navigation isLoaded={isLoaded} />
 						<SignupFormPage />
 					</Route>
 					<Route path="/app/:listId">
@@ -30,6 +33,7 @@ function App() {
 					</Route>
 					<Route>
 						<Navigation isLoaded={isLoaded} />
+						<Landing />
 					</Route>
 				</Switch>
 			)}
