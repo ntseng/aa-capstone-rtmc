@@ -76,21 +76,23 @@ export default function TaskView({ user, listId }) {
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
 						return (
-							<div key={index}>
-								<input type="checkbox"
-									checked={selectedTaskId === task.id}
-									onChange={e => {
-										if (e.target.checked) {
-											setSelectedTaskId(task.id);
-											dispatch(selectTask(task));
-										} else {
-											setSelectedTaskId(null);
-											dispatch(selectTask(null));
-										}
-									}}
-								/>
-								<span className="task-summary">
-									{task.title}
+							<div className="task-container" key={index}>
+								<span>
+									<input type="checkbox"
+										checked={selectedTaskId === task.id}
+										onChange={e => {
+											if (e.target.checked) {
+												setSelectedTaskId(task.id);
+												dispatch(selectTask(task));
+											} else {
+												setSelectedTaskId(null);
+												dispatch(selectTask(null));
+											}
+										}}
+									/>
+									<span className="task-summary">
+										{task.title}
+									</span>
 								</span>
 								{task.dueDate ? (<span>{new Date(task.dueDate).toDateString()}</span>) : (<></>)}
 							</div>
