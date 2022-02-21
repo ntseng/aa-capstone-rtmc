@@ -14,6 +14,7 @@ import * as sessionActions from './store/session';
 import * as taskActions from "./store/tasks.js";
 import * as listActions from "./store/lists.js";
 import * as selectedTaskActions from "./store/selectedTask.js";
+import * as modalActions from "./store/modal.js";
 
 const store = configureStore();
 
@@ -26,6 +27,7 @@ if (process.env.NODE_ENV !== "production") {
 	window.taskActions = taskActions;
 	window.listActions = listActions;
 	window.selectedTaskActions = selectedTaskActions;
+	window.modalActions = modalActions;
 }
 
 function Root() {

@@ -6,7 +6,7 @@ import "./css/TaskDetails.css";
 
 export default function TaskDetails({ lists }) {
 	const dispatch = useDispatch();
-	const task = useSelector(state => state.tasks[state.selectedTask?.id]);
+	const task = useSelector(state => state.tasks[state.selectedTaskId]);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
 

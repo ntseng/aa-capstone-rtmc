@@ -1,18 +1,21 @@
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom";
 import { trashList } from "../store/lists";
+import { Modal } from './Modal';
+import NewListModal from "./NewListModal";
 import "./css/ListView.css";
+import { hideModal, showModal } from "../store/modal";
 
 export default function ListView({ inboxId, ownerId }) {
 	const dispatch = useDispatch();
 	const lists = useSelector(state => state.lists);
+	const modal = useSelector(state => state.modal);
 	return (<div id="list-view-container">
 		{/* TODO #58 create logo */}
 		<ul>
 			<div className="list-view-item">
 				<div className="list-link">Lists</div>
-				{/* TODO #87 new list functionality */}
-				<button className="list-button">
+				<button className="list-button" onClick={e => dispatch(showModal("newList"))}>
 					<i className="fa-solid fa-plus" />
 				</button>
 			</div>
@@ -44,5 +47,10 @@ export default function ListView({ inboxId, ownerId }) {
 				})
 			}
 		</ul>
+		{modal === "newList" && (
+			<Modal onClose={() => dispatch(hideModal())}>
+				<NewListModal ownerId={ownerId} />
+			</Modal>
+		)}
 	</div>)
 }

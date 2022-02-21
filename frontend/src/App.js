@@ -6,11 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import { restoreUser } from './store/session';
 import Navigation from './components/Navigation';
 import AppPage from './components/AppPage';
-// import { Modal } from './components/Modal';
 function App() {
 	const dispatch = useDispatch();
 	const [isLoaded, setIsLoaded] = useState(false);
-	//   const [showModal, setShowModal] = useState(false);
 	const user = useSelector(state => state.session.user);
 
 	useEffect(() => {
@@ -19,12 +17,6 @@ function App() {
 
 	return (
 		<>
-			{/* <button onClick={() => setShowModal(true)}>Modal</button> */}
-			{/* {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <h1>Hello I am a Modal</h1>
-        </Modal>
-      )} */}
 			{isLoaded && (
 				<Switch>
 					<Route path="/login" >

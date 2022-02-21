@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import session from './session.js';
 import tasks from "./tasks.js";
 import lists from "./lists.js";
-import selectedTask from "./selectedTask.js";
+import selectedTaskId from "./selectedTask.js";
+import modal from "./modal.js";
 
 const rootReducer = combineReducers({
 	session,
 	tasks,
 	lists,
-	selectedTask
+	selectedTaskId,
+	modal
 });
 
 let enhancer;
