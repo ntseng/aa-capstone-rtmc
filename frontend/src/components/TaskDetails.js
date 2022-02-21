@@ -42,14 +42,16 @@ export default function TaskDetails({ lists }) {
 		<div id="notes-label">Notes</div>
 		{task?.notes ?
 			(<div>
-				<div>{task.notes}</div>
-				<span onClick={e => {
+				<div className="notes-div">{task.notes}</div>
+				<span>{new Date(task.updatedAt).toDateString()}</span>
+				<span> • </span>
+				<span className="notes-link" onClick={e => {
 					setNotes(task.notes);
 					setNotesBackup(task.notes);
 					dispatch(editTask({ task, notes: "" }));
 				}}>Edit</span>
-				{/* TODO #93 style notes edit/delete elements */}
-				<span onClick={e => dispatch(editTask({ task, notes: "" }))}>Delete</span>
+				<span> • </span>
+				<span className="notes-link" onClick={e => dispatch(editTask({ task, notes: "" }))}>Delete</span>
 			</div>)
 			:
 			(<div>
