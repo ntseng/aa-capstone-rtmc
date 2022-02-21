@@ -1,3 +1,25 @@
+#profile-button {
+	color: rgba(255,255,255,0.95);
+	background-color: transparent;
+	border: none;
+	font-size: 20pt;
+	padding-top: 7px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#profile-button:hover {
+	background: rgba(0, 0, 0, 0.15);
+}
+
 .profile-dropdown {
-  position: absolute;
+	background-color: white;
+	border-radius: 3px;
+	min-width: 180px;
+	position: absolute;
+	left: -300%;
+	z-index: 4;
+	margin-top: 5px;
+	text-align: left;
+	padding: 5px;
 }
