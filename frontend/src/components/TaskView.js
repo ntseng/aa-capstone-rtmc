@@ -7,9 +7,9 @@ import "./css/TaskView.css";
 export default function TaskView({ user, listId }) {
 	const dispatch = useDispatch();
 	const tasks = useSelector(state => state.tasks);
+	const selectedTaskId = useSelector(state => state.selectedTaskId);
 	const [showCompleted, setShowCompleted] = useState(false);
 	const [newTaskText, setNewTaskText] = useState("");
-	const [selectedTaskId, setSelectedTaskId] = useState(null);
 
 	useEffect(() => {
 		if (isNaN(parseInt(listId))) {
@@ -42,7 +42,6 @@ export default function TaskView({ user, listId }) {
 	return (
 		<div id="task-view-container"
 			onClick={e => {
-				setSelectedTaskId(null)
 				dispatch(selectTask(null))
 			}}
 		>
@@ -80,15 +79,7 @@ export default function TaskView({ user, listId }) {
 								<span>
 									<input type="checkbox"
 										checked={selectedTaskId === task.id}
-										onChange={e => {
-											if (e.target.checked) {
-												setSelectedTaskId(task.id);
-												dispatch(selectTask(task));
-											} else {
-												setSelectedTaskId(null);
-												dispatch(selectTask(null));
-											}
-										}}
+										onChange={e => dispatch(selectTask(e.target.checked ? task.id : null))}
 									/>
 									<span className="task-summary">
 										{task.title}
