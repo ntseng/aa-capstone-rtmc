@@ -1,7 +1,8 @@
 #list-view-container {
 	height: 100%;
-	width: 15%;
-	margin-right: 1%;
+	width: 12%;
+	margin-right: 0.5%;
+	margin-left: 0.5%;
 }
 
 .list-view-item {

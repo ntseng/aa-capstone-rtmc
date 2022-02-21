@@ -14,45 +14,44 @@ export default function ListView({ inboxId, ownerId }) {
 	const modal = useSelector(state => state.modal);
 	return (<div id="list-view-container">
 		{/* TODO #58 create logo */}
-		<ul>
-			<div className="list-view-item">
-				<div className="list-link">Lists</div>
-				<button className="list-button"
-					onClick={e => dispatch(showModal("newList"))}
-				>
-					<i className="fa-solid fa-plus" />
-				</button>
-			</div>
-			<div className="list-view-item">
-				<NavLink className="list-link" to={`/app/${inboxId}`}>Inbox</NavLink>
-			</div>
-			<div className="list-view-item">
-				<NavLink className="list-link" to="/app/all">All Tasks</NavLink>
-			</div>
-			{
-				Object.values(lists).map((list, index) => {
-					return (<div className="list-view-item" key={index}>
-						{inboxId === list.id ? (<></>) : (<>
-							<NavLink className="list-link" to={`/app/${list.id}`} onClick={e => dispatch(selectTask(null))}>
-								{list.title}
-							</NavLink>
-							<div className="list-actions-container">
-								<button className="list-button"
-									onClick={e => dispatch(showModal(`renameList/${list.id}`))}
-								>
-									<i className="fa-solid fa-pencil" />
-								</button>
-								<button className="list-button" onClick={e => dispatch(trashList({ listId: list.id, ownerId, inboxId }))}>
-									<i className="fa-solid fa-trash-can" />
-								</button>
-							</div>
-						</>
-						)
-						}
-					</div>)
-				})
-			}
-		</ul >
+		<div className="list-view-item">
+			<div className="list-link">Lists</div>
+			<button className="list-button"
+				onClick={e => dispatch(showModal("newList"))}
+			>
+				<i className="fa-solid fa-plus" />
+			</button>
+		</div>
+		<hr className="list-hr" color="#7AB2E0" size="1" />
+		<div className="list-view-item">
+			<NavLink className="list-link" to={`/app/${inboxId}`}>Inbox</NavLink>
+		</div>
+		<div className="list-view-item">
+			<NavLink className="list-link" to="/app/all">All Tasks</NavLink>
+		</div>
+		{
+			Object.values(lists).map((list, index) => {
+				return (<div className="list-view-item" key={index}>
+					{inboxId === list.id ? (<></>) : (<>
+						<NavLink className="list-link" to={`/app/${list.id}`} onClick={e => dispatch(selectTask(null))}>
+							{list.title}
+						</NavLink>
+						<div className="list-actions-container">
+							<button className="list-button"
+								onClick={e => dispatch(showModal(`renameList/${list.id}`))}
+							>
+								<i className="fa-solid fa-pencil" />
+							</button>
+							<button className="list-button" onClick={e => dispatch(trashList({ listId: list.id, ownerId, inboxId }))}>
+								<i className="fa-solid fa-trash-can" />
+							</button>
+						</div>
+					</>
+					)
+					}
+				</div>)
+			})
+		}
 		{modal === "newList" && (
 			<Modal onClose={() => dispatch(hideModal())}>
 				<NewListModal ownerId={ownerId} />
