@@ -60,14 +60,14 @@ export default function TaskDetails({ lists }) {
 					onChange={e => setNotes(e.target.value)}
 				/>
 				<button id="notes-save-button"
-					disabled={!notes}
+					hidden={!notes}
 					onClick={e => {
 						dispatch(editTask({ task, notes }));
 						setNotes("");
 					}}
 				>Save</button>
 				<button id="notes-cancel-button"
-					disabled={!notes}
+					hidden={!notes}
 					onClick={e => {
 						dispatch(editTask({ task, notes: notesBackup }));
 						setNotes("");
