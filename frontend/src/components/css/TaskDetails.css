@@ -75,6 +75,16 @@
 	margin-top: 20px;
 }
 
+.notes-div {
+	font-size: 14pt;
+	line-height: 1.5;
+}
+
+.notes-link {
+	color: #0060bf;
+	cursor: pointer;
+}
+
 #notes-label {
 	font-size: 16pt;
 	border-bottom: 1px solid grey;
