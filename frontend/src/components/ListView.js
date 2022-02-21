@@ -13,7 +13,7 @@ export default function ListView({ inboxId, ownerId }) {
 	const lists = useSelector(state => state.lists);
 	const modal = useSelector(state => state.modal);
 	return (<div id="list-view-container">
-		{/* TODO #58 create logo */}
+		<img id="logo" src="/images/cow.svg" alt="logo"/>
 		<div className="list-view-item">
 			<div className="list-link">Lists</div>
 			<button className="list-button"

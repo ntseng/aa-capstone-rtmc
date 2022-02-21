@@ -5,6 +5,10 @@
 	margin-left: 0.5%;
 }
 
+#logo {
+	background-color: #7AB2E0;
+}
+
 .list-view-item {
 	display: flex;
 	justify-content: space-between;
