@@ -9,3 +9,11 @@
 #right-container {
 	width: 50%;
 }
+
+.error-message {
+	color: red;
+}
+
+.errored-input {
+	border: 1px solid red;
+}
