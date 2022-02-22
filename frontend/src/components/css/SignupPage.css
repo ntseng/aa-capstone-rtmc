@@ -1,0 +1,11 @@
+#auth-container {
+	display: flex;
+}
+
+#left-container {
+	width: 50%;
+}
+
+#right-container {
+	width: 50%;
+}
