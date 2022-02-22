@@ -46,6 +46,50 @@
 	text-align: center;
 }
 
+#quote-text {
+	white-space: pre-line;
+	margin: 0 0 11px;
+	border: none;
+	color: #fff;
+	opacity: .9;
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 1.2;
+	padding: 0 0 0 3px;
+	max-width: 400px;
+}
+
+#quote-attribution {
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	color: #fff;
+	opacity: .75;
+	padding-left: 4px;
+	float: left;
+	margin-bottom: 30px;
+}
+
+#quote-tip-container {
+	width: 50%;
+	display: flex;
+	align-items: center;
+}
+
+.quote-circle {
+	font-size: 60px;
+	margin: 10px;
+}
+
+#quote-tip {
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	color: #fff;
+	opacity: .6;
+	max-width: 360px;
+	line-height: 1.3333333;
+}
+
 #right-container {
 	width: 50%;
 	height: 100vh;
