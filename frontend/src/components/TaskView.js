@@ -72,7 +72,7 @@ export default function TaskView({ user, listId }) {
 				/>
 				<div>
 					<button id="add-task-button"
-						hidden={!newTaskText}
+						hidden={!newTaskText.trim().length}
 						onClick={submitTask}
 					>Add Task</button>
 				</div>
