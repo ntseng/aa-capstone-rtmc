@@ -60,9 +60,15 @@ export default function TaskDetails({ lists }) {
 					placeholder="Add a note..."
 					value={notes}
 					onChange={e => setNotes(e.target.value)}
+					onKeyDown={e => {
+						if (e.key === "Enter" && notes.trim().length) {
+							dispatch(editTask({ task, notes }));
+							setNotes("");
+						}
+					}}
 				/>
 				<button id="notes-save-button"
-					hidden={!notes}
+					hidden={!notes.trim().length}
 					onClick={e => {
 						dispatch(editTask({ task, notes }));
 						setNotes("");
