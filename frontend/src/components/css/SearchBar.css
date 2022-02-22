@@ -11,24 +11,26 @@
 #search-div {
 	position: absolute;
 	left: 13%;
-	padding-top: 5px;
+	margin-top: 5px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
 }
 
 #search-input {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: transparent;
 	width: 237px;
 	height: 30px;
 	border: none;
 	outline: none;
 	color: white;
-	border-radius: 3px;
+	margin-left: 30px;
 }
 
 .fa-magnifying-glass{
 	position: absolute;
 	color: rgba(255,255,255,0.7);
 	font-size: 16pt;
-	top: 10px;
+	top: 5px;
 	left: 4px;
 }
 
