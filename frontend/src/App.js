@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import SignupFormPage from './components/SignupFormPage';
+import SignupPage from './components/SignupPage';
 import LoginFormPage from "./components/LoginFormPage";
 import { restoreUser } from './store/session';
 import AppPage from './components/AppPage';
@@ -23,7 +23,7 @@ function App() {
 						<LoginFormPage />
 					</Route>
 					<Route path='/signup'>
-						<SignupFormPage />
+						<SignupPage />
 					</Route>
 					<Route path="/app/:listId">
 						{(user) ? <AppPage user={user} /> : <Redirect to='/login' />}
