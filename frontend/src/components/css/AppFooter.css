@@ -1,0 +1,42 @@
+#app-footer-container {
+	margin: 20px 0 0 17px;
+	font-size: 0.75rem;
+	position: absolute;
+	left: 0px;
+	bottom: 39px;
+}
+
+#app-footer-ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+}
+
+.app-footer-li {
+	display: inline;
+	float: left;
+	margin: 0 0 0 8px;
+	list-style: none;
+	padding: 0;
+}
+
+.app-footer-a {
+	text-rendering: optimizeLegibility;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	outline: none;
+	color: #0060bf;
+}
+
+#app-footer-copyright {
+	color: #62676b;
+	clear: both;
+	margin: 0 0 0 8px;
+	padding: 6px 0 0;
+	display: inline-block;
+	font-size: 0.75rem;
+	text-rendering: optimizeLegibility;
+}

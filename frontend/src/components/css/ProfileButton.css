@@ -1,0 +1,40 @@
+#profile-button {
+	color: rgba(255,255,255,0.95);
+	background-color: transparent;
+	border: none;
+	font-size: 20pt;
+	padding-top: 7px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+#profile-button:hover {
+	background: rgba(0, 0, 0, 0.15);
+}
+
+.profile-dropdown {
+	background-color: white;
+	border-radius: 3px;
+	min-width: 180px;
+	position: absolute;
+	left: -300%;
+	z-index: 4;
+	margin-top: 5px;
+	text-align: left;
+	padding: 5px;
+	font-size: 12pt;
+	border: 1px solid #dbe8f6;
+}
+
+#sign-out-button {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	line-height: 1.5rem;
+	text-align: left;
+	width: 100%;
+}
+
+#sign-out-button:hover {
+	background-color: #dbe8f6;
+}

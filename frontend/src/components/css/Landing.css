@@ -1,0 +1,129 @@
+#landing-nav-ul {
+	background-color: #0060bf;
+	position: relative;
+	width: 100%;
+	min-height: 114px;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+#nav-container {
+	display: flex;
+	align-items: center;
+}
+
+#nav-actions-container {
+	display: flex;
+}
+
+#nav-logo {
+	width: 20%;
+	list-style: none;
+	border: 1px dotted blue;
+	border-radius: 4px;
+}
+
+.landing-nav-item {
+	list-style: none;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: white;
+	margin-left: 21px;
+	font-size: 15px;
+	font-weight: 700 !important;
+	opacity: .8;
+}
+
+#sign-up-button {
+	text-decoration: none;
+	color: white;
+	border: 2px solid white;
+	padding: 4px 11px;
+	border-radius: 5px;
+	font-weight: 700 !important;
+	opacity: .8;
+	font-size: 15px;
+	margin-left: 21px;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #0060bf;
+}
+
+#landing-h1 {
+	color: white;
+	font-size: 44px;
+	font-weight: 700;
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-top: 50px;
+}
+
+#landing-img {
+	width: 20%;
+	margin: 20px;
+}
+
+#call-to-action-button {
+	text-decoration: none;
+	background-color: #d24b03;
+	padding: 11px 32px 12px;
+	line-height: 1.2;
+	color: white;
+	font-size: 23px;
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border-radius: 4px;
+	font-weight: 700;
+}
+
+#landing-logo {
+	width: 10%;
+}
+
+footer {
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+
+#footer-container {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.category-heading {
+	font-weight: 700;
+	color: #8b8b94;
+	margin: 2px 0;
+}
+
+.footer-li {
+	list-style: none;
+	min-width: 140px;
+	max-width: 180px;
+}
+
+.footer-li:hover {
+	cursor: pointer;
+	background-color: #eeeeee;
+}
+
+.footer-a {
+	text-decoration: none;
+	line-height: 24px;
+	color: #8b8b94;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-radius: 3px;
+}
+
+#landing-copyright {
+	color: #8b8b94;
+	margin: 20px;
+}

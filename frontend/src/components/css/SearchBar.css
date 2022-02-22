@@ -1,0 +1,40 @@
+#search-nav {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	margin-top: 0;
+	background-color: #0060bf;
+	height: 40px;
+	display: block;
+}
+
+#search-div {
+	position: absolute;
+	left: 13%;
+	margin-top: 5px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+}
+
+#search-input {
+	background-color: transparent;
+	width: 237px;
+	height: 30px;
+	border: none;
+	outline: none;
+	color: white;
+	margin-left: 30px;
+}
+
+.fa-magnifying-glass{
+	position: absolute;
+	color: rgba(255,255,255,0.7);
+	font-size: 16pt;
+	top: 5px;
+	left: 4px;
+}
+
+#search-nav-actions {
+	position: absolute;
+	right: 0%;
+}
