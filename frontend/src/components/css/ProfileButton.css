@@ -23,6 +23,7 @@
 	text-align: left;
 	padding: 5px;
 	font-size: 12pt;
+	border: 1px solid lightgray;
 }
 
 #sign-out-button {
@@ -30,4 +31,10 @@
 	border: none;
 	background-color: transparent;
 	line-height: 1.5rem;
+	text-align: left;
+	width: 100%;
+}
+
+#sign-out-button:hover {
+	background-color: #dbe8f6;
 }
