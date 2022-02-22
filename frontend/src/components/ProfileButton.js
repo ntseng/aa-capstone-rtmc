@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../store/session';
+import "./css/ProfileButton.css";
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
@@ -27,8 +28,9 @@ function ProfileButton({ user }) {
 
 	const logout = (e) => {
 		e.preventDefault();
-		dispatch(sessionActions.logout());
-		history.push("/");
+		dispatch(sessionActions.logout()).then(() => {
+			history.push("/");
+		});
 	};
 
 	return (
