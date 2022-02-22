@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupPage from './components/SignupPage';
-import LoginFormPage from "./components/LoginFormPage";
+import LoginPage from "./components/LoginPage";
 import { restoreUser } from './store/session';
 import AppPage from './components/AppPage';
 import Landing from './components/Landing';
@@ -20,7 +20,7 @@ function App() {
 			{isLoaded && (
 				<Switch>
 					<Route path="/login" >
-						<LoginFormPage />
+						<LoginPage />
 					</Route>
 					<Route path='/signup'>
 						<SignupPage />
