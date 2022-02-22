@@ -53,8 +53,7 @@ export default function ListView({ inboxId, ownerId }) {
 							</button>
 						</div>
 					</>
-					)
-					}
+					)}
 				</div>)
 			})
 		}
