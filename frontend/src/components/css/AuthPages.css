@@ -4,10 +4,53 @@
 
 #left-container {
 	width: 50%;
+	height: 100vh;
+	background-color: #0060bf;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#home-link {
+	width: 10%;
+	position: absolute;
+	top: 0;
+	left: 12%;
+}
+
+.signup-person {
+	font-size: 80pt;
+	margin: 15px;
+}
+
+.white {
+	color: white;
+}
+
+.green {
+	color: greenyellow;
+}
+
+.skyblue {
+	color: turquoise;
+}
+
+#signup-h2 {
+	color: white;
+	opacity: 0.5;
+	font-size: 28px;
+	width: 60%;
+	line-height: 120%;
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
 }
 
 #right-container {
 	width: 50%;
+	height: 100vh;
+	background-color: white;
+	padding: 40px;
 }
 
 .error-message {

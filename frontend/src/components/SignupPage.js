@@ -34,12 +34,14 @@ function SignupPage() {
 		<div id="auth-container">
 			<div id="left-container">
 				<Link to="/">
-					<img src="/images/cow.png" alt="logo" />
+					<img id="home-link" src="/images/cow.png" alt="logo" />
 				</Link>
-				<i className="fa-solid fa-user-circle" />
-				<i className="fa-solid fa-user-circle" />
-				<i className="fa-solid fa-user-circle" />
-				<div>Join millions (?) of people getting more organized and productive!</div>
+				<div>
+					<i className="fa-solid fa-user-circle signup-person white" />
+					<i className="fa-solid fa-user-circle signup-person green" />
+					<i className="fa-solid fa-user-circle signup-person skyblue" />
+				</div>
+				<h2 id="signup-h2">Join millions (?) of people getting more organized and productive!</h2>
 			</div>
 			<div id="right-container">
 				<span>Already have an account?</span>
@@ -86,7 +88,7 @@ function SignupPage() {
 						/>
 						{errors.filter(error => error.includes("Confirm")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 					</div>
-					<button type="submit">Sign Up</button>
+					<button id="signup-button" type="submit">Sign up!</button>
 				</form>
 				<button onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</button>
 				<div>The original site has some text here about agreeing to their Terms of Service and Privacy Policies.</div>
