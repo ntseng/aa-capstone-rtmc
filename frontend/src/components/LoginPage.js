@@ -49,35 +49,31 @@ function LoginPage() {
 				<form onSubmit={handleSubmit}>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("email")).length ? "errored-input" : ""}
 							placeholder="Username or Email"
 							type="text"
 							value={credential}
 							onChange={(e) => setCredential(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => (
-								<li key={idx}>{error}</li>
-							))}
-						</ul>
+						{errors.filter(error => error.includes("email")).map((error, idx) => (
+							<div key={idx} className="error-message">{error}</div>
+						))}
 					</div>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("password")).length ? "errored-input" : ""}
 							placeholder="Password"
 							type="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => (
-								<li key={idx}>{error}</li>
-							))}
-						</ul>
+						{errors.filter(error => error.includes("password")).map((error, idx) => (
+							<div key={idx} className="error-message">{error}</div>
+						))}
 					</div>
 					<button type="submit">Log In</button>
 				</form>
-				<div onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</div>
+				<button onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</button>
 			</div>
 		</div>
 	);

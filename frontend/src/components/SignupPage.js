@@ -48,55 +48,47 @@ function SignupPage() {
 				<form onSubmit={handleSubmit}>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("email") && !error.includes("Username")).length ? "errored-input" : ""}
 							placeholder="Email"
 							type="text"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-						</ul>
+						{errors.filter(error => error.includes("email") && !error.includes("Username")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 					</div>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("username") || error.includes("Username")).length ? "errored-input" : ""}
 							placeholder="Username"
 							type="text"
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-						</ul>
+						{errors.filter(error => error.includes("username") || error.includes("Username")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 					</div>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("Password")).length ? "errored-input" : ""}
 							placeholder="Password"
 							type="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-						</ul>
+						{errors.filter(error => error.includes("Password")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 					</div>
 					<div>
 						<input
+							className={errors.filter(error => error.includes("Confirm")).length ? "errored-input" : ""}
 							placeholder="Confirm Password"
 							type="password"
 							value={confirmPassword}
 							onChange={(e) => setConfirmPassword(e.target.value)}
-							required
 						/>
-						<ul>
-							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
-						</ul>
+						{errors.filter(error => error.includes("Confirm")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 					</div>
 					<button type="submit">Sign Up</button>
 				</form>
-				<div onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</div>
+				<button onClick={e => dispatch(demoLogin()).then(() => history.push("/app/all"))}>Demo Login</button>
 				<div>The original site has some text here about agreeing to their Terms of Service and Privacy Policies.</div>
 			</div>
 		</div>
