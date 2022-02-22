@@ -24,6 +24,9 @@ export default function AppFooter() {
 			<li className="app-footer-li">
 				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/1x1/delapouite/cow.html">Logo/Favicon Credit</a>
 			</li>
+			<li className="app-footer-li">
+				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://www.rememberthemilk.com/">Original Site</a>
+			</li>
 		</ul>
 		<div id="app-footer-copyright">○ 2022 Remember the Milk Clone</div>
 	</div>)

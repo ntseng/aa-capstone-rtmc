@@ -6,6 +6,7 @@
 	margin: 0;
 	display: flex;
 	justify-content: center;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.05);
 }
 
 #nav-container {
@@ -20,6 +21,8 @@
 #nav-logo {
 	width: 20%;
 	list-style: none;
+	border: 1px dotted blue;
+	border-radius: 4px;
 }
 
 .landing-nav-item {
@@ -45,6 +48,20 @@
 	opacity: .8;
 	font-size: 15px;
 	margin-left: 21px;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #0060bf;
+}
+
+#landing-h1 {
+	color: white;
+	font-size: 44px;
+	font-weight: 700;
+	font-family: MuseoSansRounded, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #call-to-action-button {

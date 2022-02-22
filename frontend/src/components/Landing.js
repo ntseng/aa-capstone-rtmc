@@ -15,10 +15,13 @@ export default function Landing() {
 				</li>
 				<div id="nav-actions-container">
 					<li className="landing-nav-item">
-						<Link className="nav-link" to="/login">Login</Link>
+						<a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.rememberthemilk.com/">Original Site</a>
 					</li>
 					<li className="landing-nav-item">
-						<Link className="nav-link" to="/login">Login</Link>
+						<a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nathaniel-tseng-14404838/">Developer</a>
+					</li>
+					<li className="landing-nav-item">
+						<a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/ntseng/aa-capstone">Repository</a>
 					</li>
 					<li className="landing-nav-item">
 						<Link className="nav-link" to="/login">Login</Link>
@@ -30,10 +33,8 @@ export default function Landing() {
 			</div>
 		</ul>
 		<header>
-			<div>
-				<h1>The smart to-do app for busy people.</h1>
-				<Link id="call-to-action-button" to="/signup">Sign Up Free</Link>
-			</div>
+			<h1 id="landing-h1">The smart to-do app for busy people.</h1>
+			<Link id="call-to-action-button" to="/signup">Sign Up Free</Link>
 			<img id="landing-logo" src="/images/cow.svg" alt="logo" />
 		</header>
 		<footer>
