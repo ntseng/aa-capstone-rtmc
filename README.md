@@ -1,5 +1,5 @@
-#
-This student project is
+# Remember the Milk Clone
+This student project is a clone of the online to-do list app [Remember the Milk](https://www.rememberthemilk.com/). The project was made by [Nathaniel Tseng](https://github.com/ntseng) with the MVP and some bonus features being completed between Feb 14th 2022 and Feb 25th 2022. Some additional bonus features were completed between (insert dates of 2 week sprint).
 
 ## Local Viewing Instructions
 1. Clone this repo
@@ -11,8 +11,11 @@ This student project is
 6. Go to `http://localhost:3000/` in any browser
 
 ## Time Budget
-Time allotted: 80 person*hours
-Time to completion:
+Time Allotted: 80 person*hours
+
+Completion of MVP: 50 person*hours
+
+Time Spent on Bonus Features: 30 person*hours + (update with time from 2 week sprint)
 
 ## Links
 - [Live Site](https://aa-capstone.herokuapp.com/)
