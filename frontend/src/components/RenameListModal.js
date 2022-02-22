@@ -21,6 +21,12 @@ export default function RenameListModal({ listId }) {
 			type="text"
 			value={title}
 			onChange={e => setTitle(e.target.value)}
+			onKeyDown={e => {
+				if (e.key === "Enter" && title.trim().length) {
+					dispatch(renameList({ list, title }));
+					dispatch(hideModal());
+				}
+			}}
 		/>
 		<div>
 			<button id="new-list-add-button"
@@ -28,7 +34,7 @@ export default function RenameListModal({ listId }) {
 					dispatch(renameList({ list, title }));
 					dispatch(hideModal());
 				}}
-				disabled={!title}
+				disabled={!title.trim().length}
 			>
 				Save
 			</button>

@@ -69,10 +69,15 @@ export default function TaskView({ user, listId }) {
 					placeholder="Add a task..."
 					value={newTaskText}
 					onChange={e => setNewTaskText(e.target.value)}
+					onKeyDown={e => {
+						if (e.key === "Enter" && newTaskText.trim().length) {
+							submitTask();
+						}
+					}}
 				/>
 				<div>
 					<button id="add-task-button"
-						hidden={!newTaskText}
+						hidden={!newTaskText.trim().length}
 						onClick={submitTask}
 					>Add Task</button>
 				</div>
