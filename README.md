@@ -27,3 +27,16 @@ Time Spent on Bonus Features: 30 person*hours + (update with time from 2 week sp
 - [Wireframes](https://github.com/ntseng/aa-capstone/wiki/Wireframes)
 
 ## Challenges
+Modals can be an effective tool in the visual designer's toolbox. By placing the interface on top of other elements while applying a mask to those elements, the user retains context about what they were doing previously while still being allowed to focus on that task at hand.
+
+![New List Modal](frontend/public/images/modal-example.png)
+
+However, managing state for modals can prove to be cumbersome and unintuitive. How can one ensure that multiple modals aren't opened simultaneously? How should the modal pass information back to the main application? If a page has the potential to show multiple different modals (as is the case on the main app page of this project), is there a way to separate the modal's concerns from it's parent page's concerns?
+
+The solution I arrived at was to create a separate Redux store for modal state management. Fortunately, the state only required one value: an identifier for the modal that was open at the time (or a null value if no modal was open). By storing a string identifier or null as the value, the store's complexity was kept to a minimum while satisfying the other constraint for managing modal state.
+
+![Modal Store](frontend/public/images/modal-store.png)
+
+By having a single value within the single source of truth that is the Redux store, it would be ensured that there would never be any conflicts with multiple modals opening at the same time. Additionally, using a store presented an opportunity to create an interface to modal state changes, abstracting away the state management details (ie allowing the creation of the `hideModal()` function). Finally, being able to interact with the store from any component allowed splitting each of the modals off into their own component, allowing for improved modularization.
+
+Though increasing the complexity of the store, this implementation mitigates many of the complexities inherent to using modals in a site's design, significantly reducing the increase in maintenance caused by adding modals to the site.
