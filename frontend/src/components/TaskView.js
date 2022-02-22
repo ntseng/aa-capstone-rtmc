@@ -65,6 +65,7 @@ export default function TaskView({ user, listId }) {
 			</div>
 			<div id="task-creation-container">
 				<input type="text"
+					id="task-creation-input"
 					placeholder="Add a task..."
 					value={newTaskText}
 					onChange={e => setNewTaskText(e.target.value)}
