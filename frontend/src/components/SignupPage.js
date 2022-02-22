@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { signup, demoLogin } from "../store/session";
-import './css/SignupPage.css';
+import './css/AuthPages.css';
 
 function SignupPage() {
 	const dispatch = useDispatch();
@@ -33,7 +33,9 @@ function SignupPage() {
 	return (
 		<div id="auth-container">
 			<div id="left-container">
-				<img src="/images/cow.png" alt="logo" />
+				<Link to="/">
+					<img src="/images/cow.png" alt="logo" />
+				</Link>
 				<i className="fa-solid fa-user-circle" />
 				<i className="fa-solid fa-user-circle" />
 				<i className="fa-solid fa-user-circle" />
