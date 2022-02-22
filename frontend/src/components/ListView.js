@@ -12,8 +12,14 @@ export default function ListView({ inboxId, ownerId }) {
 	const dispatch = useDispatch();
 	const lists = useSelector(state => state.lists);
 	const modal = useSelector(state => state.modal);
+
+	function selectList(e) {
+		dispatch(selectTask(null))
+		document.querySelector("#search-input").value = "";
+	}
+
 	return (<div id="list-view-container">
-		<img id="logo" src="/images/cow.svg" alt="logo"/>
+		<img id="logo" src="/images/cow.svg" alt="logo" />
 		<div className="list-view-item">
 			<div className="list-link">Lists</div>
 			<button className="list-button"
@@ -24,16 +30,16 @@ export default function ListView({ inboxId, ownerId }) {
 		</div>
 		<hr className="list-hr" color="#7AB2E0" size="1" />
 		<div className="list-view-item">
-			<NavLink className="list-link" to={`/app/${inboxId}`}>Inbox</NavLink>
+			<NavLink className="list-link" to={`/app/${inboxId}`} onClick={selectList}>Inbox</NavLink>
 		</div>
 		<div className="list-view-item">
-			<NavLink className="list-link" to="/app/all">All Tasks</NavLink>
+			<NavLink className="list-link" to="/app/all" onClick={selectList}>All Tasks</NavLink>
 		</div>
 		{
 			Object.values(lists).map((list, index) => {
 				return (<div className="list-view-item" key={index}>
 					{inboxId === list.id ? (<></>) : (<>
-						<NavLink className="list-link" to={`/app/${list.id}`} onClick={e => dispatch(selectTask(null))}>
+						<NavLink className="list-link" to={`/app/${list.id}`} onClick={selectList}>
 							{list.title}
 						</NavLink>
 						<div className="list-actions-container">
