@@ -52,7 +52,7 @@ export const createList = function ({ ownerId, title }) {
 		if (!response.errors) {
 			const { list } = await response.json();
 			dispatch(postList(list));
-			return response;
+			return list;
 		} else {
 			return response.errors;
 		}
