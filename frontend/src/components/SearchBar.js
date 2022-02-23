@@ -5,6 +5,11 @@ import "./css/SearchBar.css";
 
 export default function SearchBar({ user }) {
 	const dispatch = useDispatch();
+
+	function search(e) {
+		dispatch(fetchSearchedTasks({ ownerId: user.id, searchTerm: e.target.value }))
+	}
+
 	return (<div id="search-nav">
 		<div id="search-div">
 			<i className="fa-solid fa-magnifying-glass" />
@@ -12,12 +17,12 @@ export default function SearchBar({ user }) {
 				type="search"
 				onKeyDown={e => {
 					if (e.key === "Enter" && e.target.value.trim().length) {
-						dispatch(fetchSearchedTasks({ ownerId: user.id, searchTerm: e.target.value }))
+						search(e);
 					}
 				}}
 				onBlur={e => {
 					if (e.target.value.trim().length) {
-						dispatch(fetchSearchedTasks({ ownerId: user.id, searchTerm: e.target.value }))
+						search(e);
 					}
 				}}
 			/>

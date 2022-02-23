@@ -18,12 +18,20 @@ export default function ListView({ inboxId, ownerId }) {
 		document.querySelector("#search-input").value = "";
 	}
 
+	function openModal(modalName) {
+		dispatch(showModal(modalName))
+	}
+
+	function closeModal(e) {
+		dispatch(hideModal());
+	}
+
 	return (<div id="list-view-container">
 		<img id="logo" src="/images/cow.svg" alt="logo" />
 		<div id="lists-label">
 			<div className="list-link">Lists</div>
 			<button className="list-button"
-				onClick={e => dispatch(showModal("newList"))}
+				onClick={e => openModal("newList")}
 			>
 				<i className="fa-solid fa-plus" />
 			</button>
@@ -44,7 +52,7 @@ export default function ListView({ inboxId, ownerId }) {
 						</NavLink>
 						<div className="list-actions-container">
 							<button className="list-button"
-								onClick={e => dispatch(showModal(`renameList/${list.id}`))}
+								onClick={e => openModal(`renameList/${list.id}`)}
 							>
 								<i className="fa-solid fa-pencil" />
 							</button>
@@ -58,13 +66,13 @@ export default function ListView({ inboxId, ownerId }) {
 			})
 		}
 		{modal === "newList" && (
-			<Modal onClose={() => dispatch(hideModal())}>
+			<Modal onClose={closeModal}>
 				<NewListModal ownerId={ownerId} />
 			</Modal>
 		)}
 		{
 			modal?.startsWith("renameList") && (
-				<Modal onClose={() => dispatch(hideModal())}>
+				<Modal onClose={closeModal}>
 					<RenameListModal listId={modal.split("/")[1]} />
 				</Modal>
 			)
