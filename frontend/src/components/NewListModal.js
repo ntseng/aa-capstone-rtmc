@@ -2,15 +2,19 @@ import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { createList } from "../store/lists";
 import { hideModal } from "../store/modal";
+import { useHistory } from "react-router-dom";
 import "./css/ListModals.css";
 
 export default function NewListModal({ ownerId }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const [title, setTitle] = useState("");
 
 	function postList(e) {
-		dispatch(createList({ ownerId, title }));
-		dispatch(hideModal());
+		dispatch(createList({ ownerId, title })).then(list => {
+			dispatch(hideModal());
+			history.push(`/app/${list.id}`);
+		});
 	}
 
 	function closeModal(e) {
