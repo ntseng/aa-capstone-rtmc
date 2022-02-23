@@ -85,7 +85,7 @@ export default function TaskView({ user, listId }) {
 			<div id="task-container">
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
-						if (task.listId.toString() === listId) {
+						if (task.listId.toString() === listId || listId === "all") {
 							const dueDate = new Date(task.dueDate);
 							const now = new Date();
 							return (

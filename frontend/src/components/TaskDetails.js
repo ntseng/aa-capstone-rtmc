@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { selectTask } from "../store/selectedTask";
 import { editTask } from "../store/tasks";
 import "./css/TaskDetails.css";
 
 export default function TaskDetails({ lists }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const task = useSelector(state => state.tasks[state.selectedTaskId]);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
@@ -31,11 +33,12 @@ export default function TaskDetails({ lists }) {
 		</button>
 		<div id="list-label">list</div>
 		<select id="list-select"
-			onBlur={e => dispatch(editTask({ task, listId: e.target.value }))}
+			onChange={e => { history.push(`/app/${e.target.value}`); dispatch(editTask({ task, listId: e.target.value })) }}
+			value={task ? task.listId: 0}
 		>
 			{Object.values(lists).map((list, index) => {
 				return (
-					<option key={index} value={list.id}>{list.title}</option>
+					<option key={index} value={list.id} >{list.title}</option>
 				)
 			})}
 		</select>
