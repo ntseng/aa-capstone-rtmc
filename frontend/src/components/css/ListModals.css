@@ -47,6 +47,10 @@
 	min-width: 70px;
 }
 
+#new-list-add-button:disabled {
+	opacity: 0.5;
+}
+
 #new-list-cancel-button {
 	color: #444;
 	background-color: #fbfbfa;
