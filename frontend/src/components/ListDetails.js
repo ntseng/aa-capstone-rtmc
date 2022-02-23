@@ -14,7 +14,7 @@ export default function ListDetails({ listTitle }) {
 		} else {
 			taskCount++;
 		}
-		if (task.dueDate) {
+		if (!task.done && task.dueDate) {
 			const dueDate = new Date(task.dueDate);
 			const now = new Date();
 			if (now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate()) {

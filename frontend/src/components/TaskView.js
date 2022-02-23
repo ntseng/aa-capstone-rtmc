@@ -85,27 +85,31 @@ export default function TaskView({ user, listId }) {
 			<div id="task-container">
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
-						const dueDate = new Date(task.dueDate);
-						const now = new Date();
-						return (
-							<div className="task-container" key={index}>
-								<span>
-									<input type="checkbox"
-										checked={selectedTaskId === task.id}
-										onChange={e => dispatch(selectTask(e.target.checked ? task.id : null))}
-									/>
-									<span className="task-summary">
-										{task.title}
+						if (task.listId.toString() === listId) {
+							const dueDate = new Date(task.dueDate);
+							const now = new Date();
+							return (
+								<div className="task-container" key={index}>
+									<span>
+										<input type="checkbox"
+											checked={selectedTaskId === task.id}
+											onChange={e => dispatch(selectTask(e.target.checked ? task.id : null))}
+										/>
+										<span className="task-summary">
+											{task.title}
+										</span>
 									</span>
-								</span>
-								{task.dueDate ? (<span className={
-									now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate() ?
-										"red" :
-										now.getUTCFullYear() < dueDate.getUTCFullYear() || now.getUTCMonth() < dueDate.getUTCMonth() || now.getUTCDate() < dueDate.getUTCDate() ?
-											"" :
-											"blue"}>{new Date(dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset())).toDateString()}</span>) : (<></>)}
-							</div>
-						);
+									{task.dueDate ? (<span className={
+										!task.done && (now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate()) ?
+											"red" :
+											task.done || now.getUTCFullYear() < dueDate.getUTCFullYear() || now.getUTCMonth() < dueDate.getUTCMonth() || now.getUTCDate() < dueDate.getUTCDate() ?
+												"" :
+												"blue"}>{new Date(dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset())).toDateString()}</span>) : (<></>)}
+								</div>
+							);
+						} else {
+							return (<div key={index}></div>);
+						}
 					})
 				}
 			</div>
