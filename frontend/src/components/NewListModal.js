@@ -7,10 +7,20 @@ import "./css/ListModals.css";
 export default function NewListModal({ ownerId }) {
 	const dispatch = useDispatch();
 	const [title, setTitle] = useState("");
+
+	function postList(e) {
+		dispatch(createList({ ownerId, title }));
+		dispatch(hideModal());
+	}
+
+	function closeModal(e) {
+		dispatch(hideModal());
+	}
+
 	return (<div id="new-list-container">
 		<div id="new-list-title">Add a list</div>
 		<button id="x-button"
-			onClick={e => dispatch(hideModal())}
+			onClick={closeModal}
 		>
 			<i className="fa-solid fa-x" />
 		</button>
@@ -21,23 +31,19 @@ export default function NewListModal({ ownerId }) {
 			onChange={e => setTitle(e.target.value)}
 			onKeyDown={e => {
 				if (e.key === "Enter" && title.trim().length) {
-					dispatch(createList({ ownerId, title }));
-					dispatch(hideModal());
+					postList();
 				}
 			}}
 		/>
 		<div>
 			<button id="new-list-add-button"
-				onClick={e => {
-					dispatch(createList({ ownerId, title }));
-					dispatch(hideModal());
-				}}
+				onClick={postList}
 				disabled={!title.trim().length}
 			>
 				Add
 			</button>
 			<button id="new-list-cancel-button"
-				onClick={e => dispatch(hideModal())}
+				onClick={closeModal}
 			>
 				Cancel
 			</button>
