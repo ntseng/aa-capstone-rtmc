@@ -10,9 +10,18 @@
 	background-color: #7AB2E0;
 }
 
+#lists-label {
+	display: flex;
+	justify-content: space-between;
+}
+
 .list-view-item {
 	display: flex;
 	justify-content: space-between;
+}
+
+.list-view-item:hover {
+	background-color: #BFD7EF;
 }
 
 .list-link {
