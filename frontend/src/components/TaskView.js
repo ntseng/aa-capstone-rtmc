@@ -85,6 +85,8 @@ export default function TaskView({ user, listId }) {
 			<div id="task-container">
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
+						const dueDate = new Date(task.dueDate);
+						const now = new Date();
 						return (
 							<div className="task-container" key={index}>
 								<span>
@@ -96,7 +98,12 @@ export default function TaskView({ user, listId }) {
 										{task.title}
 									</span>
 								</span>
-								{task.dueDate ? (<span>{new Date(task.dueDate).toDateString()}</span>) : (<></>)}
+								{task.dueDate ? (<span className={
+									now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate() ?
+										"red" :
+										now.getUTCFullYear() < dueDate.getUTCFullYear() || now.getUTCMonth() < dueDate.getUTCMonth() || now.getUTCDate() < dueDate.getUTCDate() ?
+											"" :
+											"blue"}>{new Date(dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset())).toDateString()}</span>) : (<></>)}
 							</div>
 						);
 					})

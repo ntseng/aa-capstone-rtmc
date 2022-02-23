@@ -19,8 +19,8 @@ export default function TaskDetails({ lists }) {
 		/>
 		<div id="due-label">due</div>
 		<input id="due-input"
-			type="datetime-local"
-			defaultValue={task?.dueDate?.slice(0, task.dueDate.length - 2)} // dueDates come back from database with an extra Z on the end
+			type="date"
+			defaultValue={new RegExp(/(\d+-\d+-\d+)/).exec(task?.dueDate)?.[1]}
 			onBlur={e => dispatch(editTask({ task, dueDate: e.target.value }))}
 		/>
 		<button id="trash-due-date-button"
