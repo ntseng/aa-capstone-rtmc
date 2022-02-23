@@ -20,7 +20,7 @@ export default function ListView({ inboxId, ownerId }) {
 
 	return (<div id="list-view-container">
 		<img id="logo" src="/images/cow.svg" alt="logo" />
-		<div className="list-view-item">
+		<div id="lists-label">
 			<div className="list-link">Lists</div>
 			<button className="list-button"
 				onClick={e => dispatch(showModal("newList"))}
