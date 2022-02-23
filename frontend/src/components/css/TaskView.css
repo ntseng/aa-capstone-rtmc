@@ -85,3 +85,11 @@
 .task-container:hover {
 	background-color: #FFFFD6;
 }
+
+.red {
+	color: red;
+}
+
+.blue {
+	color: blue;
+}
