@@ -5,12 +5,21 @@ import "./css/ListDetails.css";
 export default function ListDetails({ listTitle }) {
 	const tasks = useSelector(state => state.tasks);
 	let taskCount = 0;
+	let overdueCount = 0;
 	let doneCount = 0;
 	for (const id in tasks) {
-		if (tasks[id].done) {
+		const task = tasks[id];
+		if (task.done) {
 			doneCount++;
 		} else {
 			taskCount++;
+		}
+		if (task.dueDate) {
+			const dueDate = new Date(task.dueDate);
+			const now = new Date();
+			if (now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate()) {
+				overdueCount++;
+			}
 		}
 	}
 	return (<div id="list-details-container">
@@ -20,7 +29,10 @@ export default function ListDetails({ listTitle }) {
 				<div className="task-counter-number" id="task-count">{taskCount}</div>
 				<div className="task-counter-label">{`task${taskCount === 1 ? "" : "s"}`}</div>
 			</span>
-			{/* TODO #67 add overdue counter */}
+			{overdueCount > 0 ? (<span className="task-counter-container">
+				<div className="task-counter-number red">{overdueCount}</div>
+				<div className="task-counter-label">overdue</div>
+			</span>) : (<></>)}
 			<span className="task-counter-container">
 				<div className="task-counter-number" id="done-count">{doneCount}</div>
 				<div className="task-counter-label" id="done-count">completed</div>
