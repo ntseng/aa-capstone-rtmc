@@ -8,17 +8,32 @@
 #completion-sort-container {
 	padding-top: 23px;
 	margin-bottom: 1px;
+	padding-bottom: 5px;
 }
 
 .completion-link {
-	border: 1px dotted transparent;
+	border: 1px dotted #e5e5e5;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-	border-color: #e5e5e5;
+	border-bottom: none;
+	padding: 5px;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.tab-active {
+	border-bottom: 2px solid white;
+	font-weight: 600;
+}
+
+.tab-inactive {
+	color: #2e8ceb;
 }
 
 #task-action-container {
 	border-top: 1px dotted #e5e5e5;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .task-action-button {

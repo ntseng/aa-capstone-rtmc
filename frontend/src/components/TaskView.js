@@ -46,8 +46,8 @@ export default function TaskView({ user, listId }) {
 			}}
 		>
 			<div id="completion-sort-container">
-				<span className="completion-link" onClick={e => setShowCompleted(false)}>Incomplete</span>
-				<span className="completion-link" onClick={e => setShowCompleted(true)}>Completed</span>
+				<span className={`completion-link ${showCompleted ? "tab-inactive" : "tab-active"}`} onClick={e => setShowCompleted(false)}>Incomplete</span>
+				<span className={`completion-link ${!showCompleted ? "tab-inactive" : "tab-active"}`} onClick={e => setShowCompleted(true)}>Completed</span>
 			</div>
 			<div id="task-action-container">
 				<button className="task-action-button"
