@@ -19,6 +19,7 @@
 	text-decoration: none;
 	color: black;
 	font-size: 18pt;
+	max-width: 70%;
 }
 
 .active {
