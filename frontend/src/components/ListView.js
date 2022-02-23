@@ -28,7 +28,7 @@ export default function ListView({ inboxId, ownerId }) {
 				<i className="fa-solid fa-plus" />
 			</button>
 		</div>
-		<hr className="list-hr" color="#7AB2E0" size="1" />
+		<hr color="#7AB2E0" size="1" />
 		<div className="list-view-item">
 			<NavLink className="list-link" to={`/app/${inboxId}`} onClick={selectList}>Inbox</NavLink>
 		</div>
