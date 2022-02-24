@@ -95,7 +95,7 @@ export default function TaskView({ user, listId }) {
 									<span>
 										<input type="checkbox"
 											checked={selectedTaskId === task.id}
-											onChange={e => dispatch(selectTask(e.target.checked ? task.id : null))}
+											onClick={e => { e.stopPropagation(); dispatch(selectTask(e.target.checked ? task.id : null)) }}
 										/>
 										<span className="task-summary">
 											{task.title}
