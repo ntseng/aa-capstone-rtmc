@@ -1,6 +1,8 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Op } = require("sequelize");
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
 
 const { Task } = require("../../db/models");
 
@@ -32,14 +34,33 @@ router.get("/:ownerId(\\d+)", asyncHandler(async (req, res) => {
 	})
 }))
 
-router.post("/", asyncHandler(async (req, res) => { //TODONOW validate too many characters in title
+const validateTask = [
+	check('title')
+		.exists({ checkFalsy: true })
+		.isLength({ min: 1, max: 50 })
+		.withMessage('Please ensure title is between 1 and 50 characters.'),
+	handleValidationErrors
+];
+
+router.post("/", validateTask, asyncHandler(async (req, res) => {
 	const { ownerId, listId, title } = req.body;
 	const task = await Task.create({ ownerId, listId, title, done: false, notes: "" });
 
 	return res.json({ task });
 }))
 
-router.patch("/", asyncHandler(async (req, res) => { //TODONOW validate too many characters in title or notes
+const validateEdit = [
+	check('title')
+		.exists({ checkFalsy: true })
+		.isLength({ min: 1, max: 50 })
+		.withMessage('Please ensure title is between 1 and 50 characters.'),
+	check('notes')
+		.isLength({ max: 50 })
+		.withMessage('Please ensure notes is shorter than 50 characters.'),
+	handleValidationErrors
+];
+
+router.patch("/", validateEdit, asyncHandler(async (req, res) => {
 	const { taskId, listId, title, done, dueDate, notes } = req.body;
 	const task = await Task.findByPk(taskId);
 	if (task) {

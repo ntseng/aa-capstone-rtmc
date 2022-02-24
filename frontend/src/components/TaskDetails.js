@@ -11,14 +11,23 @@ export default function TaskDetails({ lists }) {
 	const task = useSelector(state => state.tasks[state.selectedTaskId]);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
+	const [errors, setErrors] = useState([]);
 
 	return (<div id="task-details-container" className={task ? "slide" : "not-slide"}>
 		<button id="close-task-details" onClick={e => dispatch(selectTask(null))}>close x</button>
-		<input id="task-title"
+		<input id="task-title" className={errors.filter(error => error.includes("title")).length ? "errored-input" : "ok-input"}
 			type="text"
 			defaultValue={task?.title}
-			onBlur={e => dispatch(editTask({ task, title: e.target.value }))} //TODONOW max length validation
+			onBlur={e => dispatch(editTask({ task, title: e.target.value })).then(errorArray => {
+				if (errorArray.length) {
+					setErrors(errorArray);
+				} else {
+					setErrors([]);
+				}
+			})
+		}
 		/>
+		{errors.filter(error => error.includes("title")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 		<div id="due-label">due</div>
 		<input id="due-input"
 			type="date"
@@ -58,7 +67,7 @@ export default function TaskDetails({ lists }) {
 			</div>)
 			:
 			(<div>
-				<input id="notes-input"
+				<input id="notes-input" className={errors.filter(error => error.includes("notes")).length ? "errored-input" : ""}
 					type="text"
 					placeholder="Add a note..."
 					value={notes}
@@ -70,6 +79,7 @@ export default function TaskDetails({ lists }) {
 						}
 					}}
 				/>
+				{errors.filter(error => error.includes("notes")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 				<button id="notes-save-button"
 					hidden={!notes.trim().length}
 					disabled={notes.trim().length > 50}
