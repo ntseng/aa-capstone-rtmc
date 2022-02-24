@@ -143,10 +143,11 @@ export default function reducer(stateDotLists = {}, action) {
 	let updatedState = { ...stateDotLists };
 	switch (action.type) {
 		case GET_LISTS:
+			let cleanState = {};
 			action.lists.forEach(list => {
-				updatedState[list.id] = list;
+				cleanState[list.id] = list;
 			})
-			return updatedState;
+			return cleanState;
 		case POST_LIST:
 		case PATCH_LIST:
 			updatedState[action.list.id] = action.list;
