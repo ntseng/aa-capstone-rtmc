@@ -88,7 +88,7 @@ export default function TaskDetails({ lists, avatarURL }) {
 					value={notes}
 					onChange={e => setNotes(e.target.value)}
 					onKeyDown={e => {
-						if (e.key === "Enter" && notes.trim().length && notes.trim().length < 51) {
+						if (e.key === "Enter" && notes.trim().length && notes.trim().length < 256) {
 							dispatch(editTask({ task, notes }));
 							setNotes("");
 						}
@@ -97,12 +97,12 @@ export default function TaskDetails({ lists, avatarURL }) {
 				{errors.filter(error => error.includes("notes")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 				<button id="notes-save-button"
 					hidden={!notes.trim().length}
-					disabled={notes.trim().length > 50}
+					disabled={notes.trim().length > 255}
 					onClick={e => {
 						dispatch(editTask({ task, notes }));
 						setNotes("");
 					}}
-				>{notes.trim().length < 51 ? "Save" : "Message too long"}</button>
+				>{notes.trim().length < 256 ? "Save" : "Message too long"}</button>
 				<button id="notes-cancel-button"
 					hidden={!notes}
 					onClick={e => {
