@@ -33,7 +33,7 @@ export default function TaskView({ user, listId }) {
 	function submitTask() {
 		dispatch(createTask({
 			ownerId: user.id,
-			listId,
+			listId: listId === "all" ? user.inboxId : listId,
 			title: newTaskText
 		}))
 		setNewTaskText("");
@@ -88,7 +88,8 @@ export default function TaskView({ user, listId }) {
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
 						if (task.listId.toString() === listId || listId === "all") {
 							const dueDate = new Date(task.dueDate);
-							const now = new Date();
+							const dueTimestamp = Math.floor(dueDate.getTime() / 86400000); // 86400000 ms per day
+							const now = Math.floor(Date.now() / 86400000);
 							return (
 								<div className="task-container" key={index}>
 									<span>
@@ -101,9 +102,9 @@ export default function TaskView({ user, listId }) {
 										</span>
 									</span>
 									{task.dueDate ? (<span className={
-										!task.done && (now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate()) ?
+										!task.done && now > dueTimestamp ?
 											"red" :
-											task.done || now.getUTCFullYear() < dueDate.getUTCFullYear() || now.getUTCMonth() < dueDate.getUTCMonth() || now.getUTCDate() < dueDate.getUTCDate() ?
+											task.done || now < dueTimestamp ?
 												"" :
 												"blue"}>{new Date(dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset())).toDateString()}</span>) : (<></>)}
 								</div>
