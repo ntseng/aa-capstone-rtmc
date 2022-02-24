@@ -15,9 +15,9 @@ export default function ListDetails({ listTitle }) {
 			taskCount++;
 		}
 		if (!task.done && task.dueDate) {
-			const dueDate = new Date(task.dueDate);
-			const now = new Date();
-			if (now.getUTCFullYear() > dueDate.getUTCFullYear() || now.getUTCMonth() > dueDate.getUTCMonth() || now.getUTCDate() > dueDate.getUTCDate()) {
+			const dueDate = Math.floor(new Date(task.dueDate).getTime() / 86400000); // 86400000 ms per day
+			const now = Math.floor(Date.now() / 86400000);
+			if (now > dueDate) {
 				overdueCount++;
 			}
 		}
