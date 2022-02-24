@@ -39,7 +39,9 @@
 	width: 70%;
 	margin-top: 30px;
 	font-size: large;
-	border: none;
+}
+
+.ok-input {
 	border: 1px solid transparent;
 }
 
@@ -108,6 +110,10 @@
 	min-width: 70px;
 	margin: 4px;
 	border-radius: 3px;
+}
+
+#notes-save-button:disabled {
+	opacity: 0.5;
 }
 
 #notes-cancel-button {

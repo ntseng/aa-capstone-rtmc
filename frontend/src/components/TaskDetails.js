@@ -11,14 +11,23 @@ export default function TaskDetails({ lists }) {
 	const task = useSelector(state => state.tasks[state.selectedTaskId]);
 	const [notesBackup, setNotesBackup] = useState("");
 	const [notes, setNotes] = useState(task?.notes || "");
+	const [errors, setErrors] = useState([]);
 
 	return (<div id="task-details-container" className={task ? "slide" : "not-slide"}>
 		<button id="close-task-details" onClick={e => dispatch(selectTask(null))}>close x</button>
-		<input id="task-title"
+		<input id="task-title" className={errors.filter(error => error.includes("title")).length ? "errored-input" : "ok-input"}
 			type="text"
 			defaultValue={task?.title}
-			onBlur={e => dispatch(editTask({ task, title: e.target.value }))}
+			onBlur={e => dispatch(editTask({ task, title: e.target.value })).then(errorArray => {
+				if (errorArray.length) {
+					setErrors(errorArray);
+				} else {
+					setErrors([]);
+				}
+			})
+		}
 		/>
+		{errors.filter(error => error.includes("title")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 		<div id="due-label">due</div>
 		<input id="due-input"
 			type="date"
@@ -34,7 +43,7 @@ export default function TaskDetails({ lists }) {
 		<div id="list-label">list</div>
 		<select id="list-select"
 			onChange={e => { history.push(`/app/${e.target.value}`); dispatch(editTask({ task, listId: e.target.value })) }}
-			value={task ? task.listId: 0}
+			value={task ? task.listId : 0}
 		>
 			{Object.values(lists).map((list, index) => {
 				return (
@@ -58,25 +67,27 @@ export default function TaskDetails({ lists }) {
 			</div>)
 			:
 			(<div>
-				<input id="notes-input"
+				<input id="notes-input" className={errors.filter(error => error.includes("notes")).length ? "errored-input" : ""}
 					type="text"
 					placeholder="Add a note..."
 					value={notes}
 					onChange={e => setNotes(e.target.value)}
 					onKeyDown={e => {
-						if (e.key === "Enter" && notes.trim().length) {
+						if (e.key === "Enter" && notes.trim().length && notes.trim().length < 51) {
 							dispatch(editTask({ task, notes }));
 							setNotes("");
 						}
 					}}
 				/>
+				{errors.filter(error => error.includes("notes")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 				<button id="notes-save-button"
 					hidden={!notes.trim().length}
+					disabled={notes.trim().length > 50}
 					onClick={e => {
 						dispatch(editTask({ task, notes }));
 						setNotes("");
 					}}
-				>Save</button>
+				>{notes.trim().length < 51 ? "Save" : "Message too long"}</button>
 				<button id="notes-cancel-button"
 					hidden={!notes}
 					onClick={e => {

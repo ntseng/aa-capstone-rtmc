@@ -1,7 +1,9 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+const { check } = require("express-validator");
 
 const { List } = require("../../db/models");
+const { handleValidationErrors } = require("../../utils/validation");
 
 const router = express.Router();
 
@@ -12,7 +14,15 @@ router.get("/:ownerId(\\d+)/", asyncHandler(async (req, res) => {
 	return res.json({ lists });
 }))
 
-router.post("/", asyncHandler(async (req, res) => {
+const validateList = [
+	check('title')
+		.exists({ checkFalsy: true })
+		.isLength({ min: 1, max: 50 })
+		.withMessage('Please ensure title is between 1 and 50 characters.'),
+	handleValidationErrors
+];
+
+router.post("/", validateList, asyncHandler(async (req, res) => {
 	const { ownerId, title } = req.body;
 	const list = await List.create({ ownerId, title });
 

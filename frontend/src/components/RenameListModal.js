@@ -31,7 +31,7 @@ export default function RenameListModal({ listId }) {
 			value={title}
 			onChange={e => setTitle(e.target.value)}
 			onKeyDown={e => {
-				if (e.key === "Enter" && title.trim().length) {
+				if (e.key === "Enter" && title.trim().length && title.trim().length < 51) {
 					patchList(e);
 				}
 			}}
@@ -39,9 +39,9 @@ export default function RenameListModal({ listId }) {
 		<div>
 			<button id="new-list-add-button"
 				onClick={patchList}
-				disabled={!title.trim().length}
+				disabled={!title.trim().length || title.trim().length > 50}
 			>
-				Save
+				{title.trim().length < 51 ? "Save" : "Title too long"}
 			</button>
 			<button id="new-list-cancel-button"
 				onClick={closeModal}

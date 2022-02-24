@@ -34,7 +34,7 @@ export default function NewListModal({ ownerId }) {
 			value={title}
 			onChange={e => setTitle(e.target.value)}
 			onKeyDown={e => {
-				if (e.key === "Enter" && title.trim().length) {
+				if (e.key === "Enter" && title.trim().length && title.trim().length < 51) {
 					postList();
 				}
 			}}
@@ -42,9 +42,9 @@ export default function NewListModal({ ownerId }) {
 		<div>
 			<button id="new-list-add-button"
 				onClick={postList}
-				disabled={!title.trim().length}
+				disabled={!title.trim().length || title.trim().length > 50}
 			>
-				Add
+				{title.trim().length < 51 ? "Add" : "Title too long"}
 			</button>
 			<button id="new-list-cancel-button"
 				onClick={closeModal}
