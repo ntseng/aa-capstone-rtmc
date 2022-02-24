@@ -20,7 +20,7 @@
 }
 
 .signup-person {
-	font-size: 80pt;
+	width: 80px;
 	margin: 15px;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .quote-circle {
-	font-size: 60px;
+	width: 60px;
 	margin: 10px;
 }
 

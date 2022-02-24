@@ -28,7 +28,7 @@ export default function AppPage({ user }) {
 			<ListView inboxId={user?.inboxId} ownerId={user.id} />
 			<TaskView user={user} listId={listId} />
 			<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
-			<TaskDetails lists={lists} />
+			<TaskDetails lists={lists} avatarURL={user.avatarURL} />
 		</div>
 	</>)
 }

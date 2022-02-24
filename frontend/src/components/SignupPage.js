@@ -37,9 +37,9 @@ function SignupPage() {
 					<img id="home-link" src="/images/cow.png" alt="logo" />
 				</Link>
 				<div>
-					<i className="fa-solid fa-user-circle signup-person white" />
-					<i className="fa-solid fa-user-circle signup-person green" />
-					<i className="fa-solid fa-user-circle signup-person skyblue" />
+					<img className="signup-person" src="/images/turtle.png" alt="turtle" />
+					<img className="signup-person" src="/images/unicorn.png" alt="unicorn" />
+					<img className="signup-person" src="/images/paper-frog.png" alt="paper-plane" />
 				</div>
 				<h2 id="signup-h2">Join millions (?) of people getting more organized and productive!</h2>
 			</div>

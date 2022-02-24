@@ -42,8 +42,13 @@ function ProfileButton({ user }) {
 			</button>
 			{showMenu && (
 				<div className="profile-dropdown">
-					<div>{user.username}</div>
-					<div>{user.email}</div>
+					<div id="profile-container">
+						<img id="avatar-img" src={user.avatarURL} alt="user avatar" />
+						<span>
+							<div>{user.username}</div>
+							<div>{user.email}</div>
+						</span>
+					</div>
 					<hr />
 					<div>
 						<button id="sign-out-button"

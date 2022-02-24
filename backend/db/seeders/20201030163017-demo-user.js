@@ -7,12 +7,14 @@ module.exports = {
 			{
 				email: 'demo@user.io',
 				username: 'Demo-lition',
+				avatarURL: "/images/dynamite.png",
 				hashedPassword: bcrypt.hashSync('password'),
 				inboxId: 1
 			},
 			{
 				email: "alice@secret.io",
 				username: "Alice",
+				avatarURL: "/images/paper-frog.png",
 				hashedPassword: bcrypt.hashSync("password"),
 				inboxId: 5
 			}

@@ -33,7 +33,9 @@ router.post('',
 	validateSignup,
 	asyncHandler(async (req, res) => {
 		const { email, password, username, inboxId } = req.body;
-		const user = await User.signup({ email, username, password, inboxId });
+		const defaultAvatars = ["paper-frog", "paper-plane", "sauropod-skeleton", "turtle", "unicorn"];
+		const avatarURL = `/images/${defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)]}.png`;
+		const user = await User.signup({ email, username, avatarURL, password, inboxId });
 
 		await setTokenCookie(res, user);
 		user.save();
