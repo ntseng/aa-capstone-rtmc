@@ -37,34 +37,36 @@ export default function ListView({ inboxId, ownerId }) {
 			</button>
 		</div>
 		<hr color="#7AB2E0" size="1" />
-		<div className="list-view-item">
-			<NavLink className="list-link" to={`/app/${inboxId}`} onClick={selectList}>Inbox</NavLink>
+		<div id="list-container">
+			<div className="list-view-item">
+				<NavLink className="list-link" to={`/app/${inboxId}`} onClick={selectList}>Inbox</NavLink>
+			</div>
+			<div className="list-view-item">
+				<NavLink className="list-link" to="/app/all" onClick={selectList}>All Tasks</NavLink>
+			</div>
+			{
+				Object.values(lists).map((list, index) => {
+					return (<div className="list-view-item" key={index}>
+						{inboxId === list.id ? (<></>) : (<>
+							<NavLink className="list-link" to={`/app/${list.id}`} onClick={selectList}>
+								{list.title}
+							</NavLink>
+							<div className="list-actions-container">
+								<button className="list-button"
+									onClick={e => openModal(`renameList/${list.id}`)}
+								>
+									<i className="fa-solid fa-pencil" />
+								</button>
+								<button className="list-button" onClick={e => openModal(`deleteList/${list.id}`)}>
+									<i className="fa-solid fa-trash-can" />
+								</button>
+							</div>
+						</>
+						)}
+					</div>)
+				})
+			}
 		</div>
-		<div className="list-view-item">
-			<NavLink className="list-link" to="/app/all" onClick={selectList}>All Tasks</NavLink>
-		</div>
-		{
-			Object.values(lists).map((list, index) => {
-				return (<div className="list-view-item" key={index}>
-					{inboxId === list.id ? (<></>) : (<>
-						<NavLink className="list-link" to={`/app/${list.id}`} onClick={selectList}>
-							{list.title}
-						</NavLink>
-						<div className="list-actions-container">
-							<button className="list-button"
-								onClick={e => openModal(`renameList/${list.id}`)}
-							>
-								<i className="fa-solid fa-pencil" />
-							</button>
-							<button className="list-button" onClick={e => openModal(`deleteList/${list.id}`)}>
-								<i className="fa-solid fa-trash-can" />
-							</button>
-						</div>
-					</>
-					)}
-				</div>)
-			})
-		}
 		{modal === "newList" && (
 			<Modal onClose={closeModal}>
 				<NewListModal ownerId={ownerId} />

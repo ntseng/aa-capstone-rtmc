@@ -15,6 +15,11 @@
 	justify-content: space-between;
 }
 
+#list-container {
+	overflow-y: auto;
+	height: 60%;
+}
+
 .list-view-item {
 	display: flex;
 	justify-content: space-between;
