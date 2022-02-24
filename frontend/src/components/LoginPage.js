@@ -53,7 +53,7 @@ function LoginPage() {
 					<form id="auth-form" onSubmit={handleSubmit}>
 						<h3 id="auth-h3">Been here before? Welcome back!</h3>
 						<div>
-							<input className={errors.filter(error => error.includes("email")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("email")).length ? "errored-input" : ""}`}
 								placeholder="Username or Email"
 								type="text"
 								value={credential}
@@ -64,7 +64,7 @@ function LoginPage() {
 							))}
 						</div>
 						<div>
-							<input className={errors.filter(error => error.includes("password")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("password")).length ? "errored-input" : ""}`}
 								placeholder="Password"
 								type="password"
 								value={password}

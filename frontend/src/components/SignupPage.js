@@ -52,7 +52,7 @@ function SignupPage() {
 					<form id="auth-form" onSubmit={handleSubmit}>
 						<h3 id="auth-h3">Sign up for free.</h3>
 						<div>
-							<input className={errors.filter(error => error.includes("email") && !error.includes("Username")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("email") && !error.includes("Username")).length ? "errored-input" : ""}`}
 								placeholder="Email"
 								type="text"
 								value={email}
@@ -61,7 +61,7 @@ function SignupPage() {
 							{errors.filter(error => error.includes("email") && !error.includes("Username")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 						</div>
 						<div>
-							<input className={errors.filter(error => error.includes("username") || error.includes("Username")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("username") || error.includes("Username")).length ? "errored-input" : ""}`}
 								placeholder="Username"
 								type="text"
 								value={username}
@@ -70,7 +70,7 @@ function SignupPage() {
 							{errors.filter(error => error.includes("username") || error.includes("Username")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 						</div>
 						<div>
-							<input className={errors.filter(error => error.includes("Password")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("Password")).length ? "errored-input" : ""}`}
 								placeholder="Password"
 								type="password"
 								value={password}
@@ -79,7 +79,7 @@ function SignupPage() {
 							{errors.filter(error => error.includes("Password")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 						</div>
 						<div>
-							<input className={errors.filter(error => error.includes("Confirm")).length ? "auth-input errored-input" : "auth-input"}
+							<input className={`auth-input ${errors.filter(error => error.includes("Confirm")).length ? "errored-input" : ""}`}
 								placeholder="Confirm Password"
 								type="password"
 								value={confirmPassword}
