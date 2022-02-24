@@ -13,9 +13,9 @@ This student project is a clone of the online to-do list app [Remember the Milk]
 ## Time Budget
 Time Allotted: 80 person*hours
 
-Completion of MVP: 50 person*hours
+Completion of MVP: 55 person*hours
 
-Time Spent on Bonus Features: 30 person*hours + (update with time from 2 week sprint)
+Time Spent on Bonus Features: 25 person*hours + (update with time from 2 week sprint)
 
 ## Links
 - [Live Site](https://aa-capstone.herokuapp.com/)

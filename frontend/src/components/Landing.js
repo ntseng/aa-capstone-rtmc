@@ -44,7 +44,6 @@ export default function Landing() {
 						<div className="category-heading">Developer</div>
 						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nathaniel-tseng-14404838/">LinkedIn</a></li>
 						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://github.com/ntseng">GitHub</a></li>
-						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1oUYEFjFufv3GhipZB3FYK4PMajOvvq6wDjri6ycO6PM/edit#gid=122240886">Scorecard</a></li>
 					</ul>
 					<ul>
 						<div className="category-heading">Product</div>
