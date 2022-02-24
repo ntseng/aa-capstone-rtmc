@@ -70,7 +70,7 @@ export default function TaskView({ user, listId }) {
 					value={newTaskText}
 					onChange={e => setNewTaskText(e.target.value)}
 					onKeyDown={e => {
-						if (e.key === "Enter" && newTaskText.trim().length) {
+						if (e.key === "Enter" && newTaskText.trim().length && newTaskText.trim().length < 51) {
 							submitTask();
 						}
 					}}
@@ -78,8 +78,9 @@ export default function TaskView({ user, listId }) {
 				<div>
 					<button id="add-task-button"
 						hidden={!newTaskText.trim().length}
+						disabled={newTaskText.trim().length > 50}
 						onClick={submitTask}
-					>Add Task</button>
+					>{newTaskText.trim().length < 51 ? "Add Task" : "Title too long"}</button>
 				</div>
 			</div>
 			<div id="task-container">

@@ -17,7 +17,7 @@ export default function TaskDetails({ lists }) {
 		<input id="task-title"
 			type="text"
 			defaultValue={task?.title}
-			onBlur={e => dispatch(editTask({ task, title: e.target.value }))}
+			onBlur={e => dispatch(editTask({ task, title: e.target.value }))} //TODONOW max length validation
 		/>
 		<div id="due-label">due</div>
 		<input id="due-input"
@@ -34,7 +34,7 @@ export default function TaskDetails({ lists }) {
 		<div id="list-label">list</div>
 		<select id="list-select"
 			onChange={e => { history.push(`/app/${e.target.value}`); dispatch(editTask({ task, listId: e.target.value })) }}
-			value={task ? task.listId: 0}
+			value={task ? task.listId : 0}
 		>
 			{Object.values(lists).map((list, index) => {
 				return (
@@ -64,7 +64,7 @@ export default function TaskDetails({ lists }) {
 					value={notes}
 					onChange={e => setNotes(e.target.value)}
 					onKeyDown={e => {
-						if (e.key === "Enter" && notes.trim().length) {
+						if (e.key === "Enter" && notes.trim().length && notes.trim().length < 51) {
 							dispatch(editTask({ task, notes }));
 							setNotes("");
 						}
@@ -72,11 +72,12 @@ export default function TaskDetails({ lists }) {
 				/>
 				<button id="notes-save-button"
 					hidden={!notes.trim().length}
+					disabled={notes.trim().length > 50}
 					onClick={e => {
 						dispatch(editTask({ task, notes }));
 						setNotes("");
 					}}
-				>Save</button>
+				>{notes.trim().length < 51 ? "Save" : "Message too long"}</button>
 				<button id="notes-cancel-button"
 					hidden={!notes}
 					onClick={e => {

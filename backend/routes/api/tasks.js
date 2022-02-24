@@ -32,14 +32,14 @@ router.get("/:ownerId(\\d+)", asyncHandler(async (req, res) => {
 	})
 }))
 
-router.post("/", asyncHandler(async (req, res) => {
+router.post("/", asyncHandler(async (req, res) => { //TODONOW validate too many characters in title
 	const { ownerId, listId, title } = req.body;
 	const task = await Task.create({ ownerId, listId, title, done: false, notes: "" });
 
 	return res.json({ task });
 }))
 
-router.patch("/", asyncHandler(async (req, res) => {
+router.patch("/", asyncHandler(async (req, res) => { //TODONOW validate too many characters in title or notes
 	const { taskId, listId, title, done, dueDate, notes } = req.body;
 	const task = await Task.findByPk(taskId);
 	if (task) {

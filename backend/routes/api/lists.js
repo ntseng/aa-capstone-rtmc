@@ -12,7 +12,7 @@ router.get("/:ownerId(\\d+)/", asyncHandler(async (req, res) => {
 	return res.json({ lists });
 }))
 
-router.post("/", asyncHandler(async (req, res) => {
+router.post("/", asyncHandler(async (req, res) => { //TODONOW validate too many characters for list title
 	const { ownerId, title } = req.body;
 	const list = await List.create({ ownerId, title });
 

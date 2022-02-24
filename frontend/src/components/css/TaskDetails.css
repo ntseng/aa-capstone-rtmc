@@ -110,6 +110,10 @@
 	border-radius: 3px;
 }
 
+#notes-save-button:disabled {
+	opacity: 0.5;
+}
+
 #notes-cancel-button {
 	border: 1px solid #c7cacd;
 	height: 32px;
