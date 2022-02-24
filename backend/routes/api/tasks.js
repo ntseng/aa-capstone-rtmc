@@ -55,8 +55,8 @@ const validateEdit = [
 		.isLength({ min: 1, max: 50 })
 		.withMessage('Please ensure title is between 1 and 50 characters.'),
 	check('notes')
-		.isLength({ max: 50 })
-		.withMessage('Please ensure notes is shorter than 50 characters.'),
+		.isLength({ max: 255 })
+		.withMessage('Please ensure notes is shorter than 255 characters.'),
 	handleValidationErrors
 ];
 
