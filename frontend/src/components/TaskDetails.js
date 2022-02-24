@@ -5,7 +5,7 @@ import { selectTask } from "../store/selectedTask";
 import { editTask } from "../store/tasks";
 import "./css/TaskDetails.css";
 
-export default function TaskDetails({ lists }) {
+export default function TaskDetails({ lists, avatarURL }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const task = useSelector(state => state.tasks[state.selectedTaskId]);
@@ -25,7 +25,7 @@ export default function TaskDetails({ lists }) {
 					setErrors([]);
 				}
 			})
-		}
+			}
 		/>
 		{errors.filter(error => error.includes("title")).map((error, idx) => <div key={idx} className="error-message">{error}</div>)}
 		<div id="due-label">due</div>
@@ -54,16 +54,21 @@ export default function TaskDetails({ lists }) {
 		<div id="notes-label">Notes</div>
 		{task?.notes ?
 			(<div>
-				<div className="notes-div">{task.notes}</div>
-				<span>{new Date(task.updatedAt).toDateString()}</span>
-				<span> • </span>
-				<span className="notes-link" onClick={e => {
-					setNotes(task.notes);
-					setNotesBackup(task.notes);
-					dispatch(editTask({ task, notes: "" }));
-				}}>Edit</span>
-				<span> • </span>
-				<span className="notes-link" onClick={e => dispatch(editTask({ task, notes: "" }))}>Delete</span>
+				<div className="note-container">
+					<img className="note-avatar" src={avatarURL} alt="user avatar" />
+					<span>
+						<div className="notes-div">{task.notes}</div>
+						<span>{new Date(task.updatedAt).toDateString()}</span>
+						<span> • </span>
+						<span className="notes-link" onClick={e => {
+							setNotes(task.notes);
+							setNotesBackup(task.notes);
+							dispatch(editTask({ task, notes: "" }));
+						}}>Edit</span>
+						<span> • </span>
+						<span className="notes-link" onClick={e => dispatch(editTask({ task, notes: "" }))}>Delete</span>
+					</span>
+				</div>
 			</div>)
 			:
 			(<div>

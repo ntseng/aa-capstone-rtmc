@@ -17,13 +17,23 @@
 	border-radius: 3px;
 	min-width: 180px;
 	position: absolute;
-	left: -300%;
+	left: -350%;
 	z-index: 4;
 	margin-top: 5px;
 	text-align: left;
 	padding: 5px;
 	font-size: 12pt;
 	border: 1px solid #dbe8f6;
+}
+
+#profile-container {
+	display: flex;
+	align-items: center;
+}
+
+#avatar-img {
+	width: 40px;
+	margin: 5px;
 }
 
 #sign-out-button {

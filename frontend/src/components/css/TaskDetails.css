@@ -77,6 +77,16 @@
 	margin-top: 20px;
 }
 
+.note-container {
+	display: flex;
+	align-items: center;
+}
+
+.note-avatar {
+	width: 60px;
+	padding: 10px;
+}
+
 .notes-div {
 	font-size: 14pt;
 	line-height: 1.5;

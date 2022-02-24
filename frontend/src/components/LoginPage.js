@@ -38,7 +38,7 @@ function LoginPage() {
 					- Sean Bonner
 				</div>
 				<div id="quote-tip-container">
-					<i className="fa-solid fa-user-circle quote-circle white" />
+					<img className="quote-circle" src="/images/paper-plane.png" alt="Bot T. Monkey" />
 					<span id="quote-tip">
 						Quote curated from the collection of Bob T. Monkey, renowned productivity expert
 					</span>
