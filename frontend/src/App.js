@@ -8,7 +8,7 @@ import AppPage from './components/AppPage';
 import Landing from './components/Landing';
 function App() {
 	const dispatch = useDispatch();
-	const [isLoaded, setIsLoaded] = useState(false); //TODO #121 use isLoaded to reduce use of optional chaining
+	const [isLoaded, setIsLoaded] = useState(false);
 	const user = useSelector(state => state.session.user);
 
 	useEffect(() => {

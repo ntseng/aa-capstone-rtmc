@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { selectTask } from "../store/selectedTask";
@@ -9,15 +9,24 @@ export default function TaskDetails({ lists, avatarURL }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const task = useSelector(state => state.tasks[state.selectedTaskId]);
+	const [title, setTitle] = useState("");
+	const [dueDate, setDueDate] = useState("");
 	const [notesBackup, setNotesBackup] = useState("");
-	const [notes, setNotes] = useState(task?.notes || "");
+	const [notes, setNotes] = useState(task?.notes || ""); //TODO investigate useRef
 	const [errors, setErrors] = useState([]);
+
+	useEffect(() => {
+		setErrors([]);
+		setTitle(task?.title || "");
+		setDueDate(new RegExp(/(\d+-\d+-\d+)/).exec(task?.dueDate)?.[1] || "");
+	}, [task])
 
 	return (<div id="task-details-container" className={task ? "slide" : "not-slide"}>
 		<button id="close-task-details" onClick={e => dispatch(selectTask(null))}>close x</button>
 		<input id="task-title" className={errors.filter(error => error.includes("title")).length ? "errored-input" : "ok-input"}
 			type="text"
-			defaultValue={task?.title}
+			value={title}
+			onChange={e => setTitle(e.target.value)}
 			onBlur={e => dispatch(editTask({ task, title: e.target.value })).then(errorArray => {
 				if (errorArray.length) {
 					setErrors(errorArray);
@@ -31,7 +40,8 @@ export default function TaskDetails({ lists, avatarURL }) {
 		<div id="due-label">due</div>
 		<input id="due-input"
 			type="date"
-			defaultValue={new RegExp(/(\d+-\d+-\d+)/).exec(task?.dueDate)?.[1]}
+			value={dueDate}
+			onChange={e => setDueDate(e.target.value)}
 			onBlur={e => dispatch(editTask({ task, dueDate: e.target.value }))}
 		/>
 		<button id="trash-due-date-button"

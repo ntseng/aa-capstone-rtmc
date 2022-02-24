@@ -25,7 +25,7 @@ export default function AppPage({ user }) {
 	return (<>
 		<SearchBar user={user} />
 		<div id="app-container">
-			<ListView inboxId={user?.inboxId} ownerId={user.id} />
+			<ListView inboxId={user.inboxId} ownerId={user.id} />
 			<TaskView user={user} listId={listId} />
 			<ListDetails listTitle={lists[listId]?.title ? lists[listId].title : "All Tasks"} />
 			<TaskDetails lists={lists} avatarURL={user.avatarURL} />

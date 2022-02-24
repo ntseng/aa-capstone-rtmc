@@ -33,7 +33,7 @@ export default function TaskView({ user, listId }) {
 	function submitTask() {
 		dispatch(createTask({
 			ownerId: user.id,
-			listId: 1,
+			listId,
 			title: newTaskText
 		}))
 		setNewTaskText("");
