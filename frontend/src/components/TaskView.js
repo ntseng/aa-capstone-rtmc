@@ -33,7 +33,7 @@ export default function TaskView({ user, listId }) {
 	function submitTask() {
 		dispatch(createTask({
 			ownerId: user.id,
-			listId: listId === "all" ? user.inboxId : listId,
+			listId: ["all", "search"].includes(listId) ? user.inboxId : listId,
 			title: newTaskText
 		}))
 		setNewTaskText("");
@@ -86,7 +86,7 @@ export default function TaskView({ user, listId }) {
 			<div id="task-container">
 				{
 					Object.values(tasks).filter(task => task.done === showCompleted).map((task, index) => {
-						if (task.listId.toString() === listId || listId === "all") {
+						if (task.listId.toString() === listId || ["all", "search"].includes(listId)) {
 							const dueDate = new Date(task.dueDate);
 							const dueTimestamp = Math.floor(dueDate.getTime() / 86400000); // 86400000 ms per day
 							const now = Math.floor(Date.now() / 86400000);
@@ -94,7 +94,7 @@ export default function TaskView({ user, listId }) {
 								<div className="task-container" key={index}>
 									<span>
 										<input type="checkbox"
-											checked={selectedTaskId === task.id}
+											value={selectedTaskId === task.id}
 											onClick={e => { e.stopPropagation(); dispatch(selectTask(e.target.checked ? task.id : null)) }}
 										/>
 										<span className="task-summary">

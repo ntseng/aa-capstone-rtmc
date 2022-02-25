@@ -22,7 +22,7 @@ export default function AppPage({ user }) {
 		document.title = `${lists[listId]?.title ? lists[listId].title : "All Tasks"} - RtMC`;
 	}, [lists, listId])
 
-	if (!(lists[listId] || listId === "all")) {
+	if (!(lists[listId] || ["all", "search"].includes(listId))) {
 		return (<Redirect to={`/app/${user.inboxId}`} />)
 	}
 
