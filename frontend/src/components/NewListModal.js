@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { createList } from "../store/lists";
 import { hideModal } from "../store/modal";
 import { useHistory } from "react-router-dom";
-import "./css/ListModals.css";
+import "./css/Modal.css";
 
 export default function NewListModal({ ownerId }) {
 	const dispatch = useDispatch();
@@ -21,15 +21,15 @@ export default function NewListModal({ ownerId }) {
 		dispatch(hideModal());
 	}
 
-	return (<div id="new-list-container">
-		<div id="new-list-title">Add a list</div>
-		<button id="x-button"
+	return (<div id="modal-container">
+		<div id="modal-title">Add a list</div>
+		<button id="modal-x-button"
 			onClick={closeModal}
 		>
 			<i className="fa-solid fa-x" />
 		</button>
 		<div>Please enter a new list name:</div>
-		<input id="new-list-input"
+		<input id="modal-input"
 			type="text"
 			value={title}
 			onChange={e => setTitle(e.target.value)}
@@ -40,13 +40,13 @@ export default function NewListModal({ ownerId }) {
 			}}
 		/>
 		<div>
-			<button id="new-list-add-button"
+			<button id="modal-add-button" className="modal-button"
 				onClick={postList}
 				disabled={!title.trim().length || title.trim().length > 50}
 			>
 				{title.trim().length < 51 ? "Add" : "Title too long"}
 			</button>
-			<button id="new-list-cancel-button"
+			<button id="modal-cancel-button" className="modal-button"
 				onClick={closeModal}
 			>
 				Cancel

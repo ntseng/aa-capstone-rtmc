@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { trashList } from "../store/lists";
 import { hideModal } from "../store/modal";
-import "./css/ListModals.css";
+import "./css/Modal.css";
 
 export default function DeleteListModal({ ownerId, listId, inboxId }) {
 	const dispatch = useDispatch();
@@ -19,21 +19,21 @@ export default function DeleteListModal({ ownerId, listId, inboxId }) {
 		dispatch(hideModal());
 	}
 
-	return (<div id="new-list-container">
-		<div id="new-list-title">Remove list</div>
-		<button id="x-button"
+	return (<div id="modal-container">
+		<div id="modal-title">Remove list</div>
+		<button id="modal-x-button"
 			onClick={closeModal}
 		>
 			<i className="fa-solid fa-x" />
 		</button>
-		<div id="list-modal-instructions">{`Are you sure you wish to remove the list ${list.title}? Tasks on this list will be moved to the your Inbox.`}</div>
+		<div id="modal-instructions">{`Are you sure you wish to remove the list ${list.title}? Tasks on this list will be moved to the your Inbox.`}</div>
 		<div>
-			<button id="new-list-add-button"
+			<button id="modal-add-button" className="modal-button"
 				onClick={deleteList}
 			>
 				Yes, remove list
 			</button>
-			<button id="new-list-cancel-button"
+			<button id="modal-cancel-button" className="modal-button"
 				onClick={closeModal}
 			>
 				Cancel
