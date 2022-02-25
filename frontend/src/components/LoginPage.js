@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login, demoLogin } from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useHistory } from "react-router-dom";
@@ -11,6 +11,10 @@ function LoginPage() {
 	const [credential, setCredential] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+
+	useEffect(() => {
+		document.title = "RtMC - Login";
+	}, [])
 
 	if (sessionUser) return <Redirect to="/app/all" />;
 

@@ -18,6 +18,10 @@ export default function AppPage({ user }) {
 		dispatch(fetchLists({ ownerId: user.id }));
 	}, [dispatch, user.id])
 
+	useEffect(() => {
+		document.title = `${lists[listId]?.title ? lists[listId].title : "All Tasks"} - RtMC`;
+	}, [lists, listId])
+
 	if (!(lists[listId] || listId === "all")) {
 		return (<Redirect to={`/app/${user.inboxId}`} />)
 	}

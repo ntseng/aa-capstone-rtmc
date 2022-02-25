@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import "./css/Landing.css";
@@ -5,7 +6,12 @@ import "./css/Landing.css";
 export default function Landing() {
 	const sessionUser = useSelector(state => state.session.user);
 
+	useEffect(() => {
+		document.title = "Remember the Milk Clone";
+	}, [])
+
 	if (sessionUser) return <Redirect to="/app/all" />;
+
 	return (<>
 		<ul id="landing-nav-ul">
 			<div id="nav-container">
