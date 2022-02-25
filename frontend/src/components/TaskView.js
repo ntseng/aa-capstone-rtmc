@@ -12,9 +12,9 @@ export default function TaskView({ user, listId }) {
 	const [newTaskText, setNewTaskText] = useState("");
 
 	useEffect(() => {
-		if (isNaN(parseInt(listId))) {
+		if (listId === "all") {
 			dispatch(fetchAllTasks({ ownerId: user.id }));
-		} else {
+		} else if (!isNaN(parseInt(listId))) {
 			dispatch(fetchTasksFromList({ ownerId: user.id, listId }));
 		}
 	}, [dispatch, user.id, listId])
@@ -40,11 +40,7 @@ export default function TaskView({ user, listId }) {
 	}
 
 	return (
-		<div id="task-view-container"
-			onClick={e => {
-				dispatch(selectTask(null))
-			}}
-		>
+		<div id="task-view-container">
 			<div id="completion-sort-container">
 				<span className={`completion-link ${showCompleted ? "tab-inactive" : "tab-active"}`} onClick={e => setShowCompleted(false)}>Incomplete</span>
 				<span className={`completion-link ${!showCompleted ? "tab-inactive" : "tab-active"}`} onClick={e => setShowCompleted(true)}>Completed</span>
@@ -91,11 +87,13 @@ export default function TaskView({ user, listId }) {
 							const dueTimestamp = Math.floor(dueDate.getTime() / 86400000); // 86400000 ms per day
 							const now = Math.floor(Date.now() / 86400000);
 							return (
-								<div className="task-container" key={index}>
+								<div className="task-container" key={index}
+									onClick={e => dispatch(selectTask(selectedTaskId !== task.id ? task.id : null))}
+								>
 									<span>
-										<input type="checkbox"
-											value={selectedTaskId === task.id}
-											onClick={e => { e.stopPropagation(); dispatch(selectTask(e.target.checked ? task.id : null)) }}
+										<input type="radio"
+											checked={selectedTaskId === task.id}
+											readOnly
 										/>
 										<span className="task-summary">
 											{task.title}
