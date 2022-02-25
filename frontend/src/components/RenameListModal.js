@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { renameList } from "../store/lists";
 import { hideModal } from "../store/modal";
-import "./css/ListModals.css";
+import "./css/Modal.css";
 
 export default function RenameListModal({ listId }) {
 	const dispatch = useDispatch();
@@ -18,15 +18,15 @@ export default function RenameListModal({ listId }) {
 		dispatch(hideModal());
 	}
 
-	return (<div id="new-list-container">
-		<div id="new-list-title">Rename list</div>
-		<button id="x-button"
+	return (<div id="modal-container">
+		<div id="modal-title">Rename list</div>
+		<button id="modal-x-button"
 			onClick={closeModal}
 		>
 			<i className="fa-solid fa-x" />
 		</button>
 		<div>List name</div>
-		<input id="new-list-input"
+		<input id="modal-input"
 			type="text"
 			value={title}
 			onChange={e => setTitle(e.target.value)}
@@ -37,13 +37,13 @@ export default function RenameListModal({ listId }) {
 			}}
 		/>
 		<div>
-			<button id="new-list-add-button"
+			<button id="modal-add-button" className="modal-button"
 				onClick={patchList}
 				disabled={!title.trim().length || title.trim().length > 50}
 			>
 				{title.trim().length < 51 ? "Save" : "Title too long"}
 			</button>
-			<button id="new-list-cancel-button"
+			<button id="modal-cancel-button" className="modal-button"
 				onClick={closeModal}
 			>
 				Cancel
