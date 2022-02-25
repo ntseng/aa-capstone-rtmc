@@ -22,7 +22,7 @@ export default function AppFooter() {
 				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://github.com/ntseng/aa-capstone/wiki/User-Stories">User Stories</a>
 			</li>
 			<li className="app-footer-li">
-				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/1x1/delapouite/cow.html">Logo/Favicon Credit</a>
+				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/">Logo/User Icons</a>
 			</li>
 			<li className="app-footer-li">
 				<a className="app-footer-a" target="_blank" rel="noopener noreferrer" href="https://www.rememberthemilk.com/">Original Site</a>

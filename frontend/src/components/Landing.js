@@ -62,7 +62,8 @@ export default function Landing() {
 					<ul>
 						<div className="category-heading">Credits</div>
 						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://www.rememberthemilk.com/">Original Site</a></li>
-						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/1x1/delapouite/cow.html">Logo/Favicon Credit</a></li>
+						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/1x1/delapouite/cow.html">Logo/Favicon</a></li>
+						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://game-icons.net/">User Icons</a></li>
 						<li className="footer-li"><a className="footer-a" target="_blank" rel="noopener noreferrer" href="https://unsplash.com/@plhnk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Landing Photo</a></li>
 					</ul>
 					<ul>
