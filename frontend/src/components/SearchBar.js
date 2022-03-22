@@ -18,15 +18,8 @@ export default function SearchBar({ user }) {
 			<i className="fa-solid fa-magnifying-glass" />
 			<input id="search-input"
 				type="search"
-				onKeyDown={e => {
-					if (e.key === "Enter" && e.target.value.trim().length) {
-						search(e);
-					}
-				}}
-				onBlur={e => {
-					if (e.target.value.trim().length) {
-						search(e);
-					}
+				onChange={e => {
+					search(e);
 				}}
 			/>
 		</div>
