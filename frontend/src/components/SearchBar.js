@@ -8,8 +8,8 @@ export default function SearchBar({ user }) {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	function search(e) {
-		dispatch(fetchSearchedTasks({ ownerId: user.id, searchTerm: e.target.value }));
+	function search(searchTerm) {
+		dispatch(fetchSearchedTasks({ ownerId: user.id, searchTerm }));
 		history.push("/app/search");
 	}
 
@@ -19,7 +19,9 @@ export default function SearchBar({ user }) {
 			<input id="search-input"
 				type="search"
 				onChange={e => {
-					search(e);
+					if (e.target.value.trim().length) {
+						search(e.target.value.trim());
+					}
 				}}
 			/>
 		</div>
