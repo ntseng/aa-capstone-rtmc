@@ -46,13 +46,15 @@ export default function TaskView({ user, listId }) {
 				<span className={`completion-link ${!showCompleted ? "tab-inactive" : "tab-active"}`} onClick={e => setShowCompleted(true)}>Completed</span>
 			</div>
 			<div id="task-action-container">
-				<button className="task-action-button"
+				<button title={showCompleted ? "Mark Task Incomplete" : "Mark Task Complete"}
+					className="task-action-button"
 					disabled={selectedTaskId === null}
 					onClick={toggleComplete}
 				>
 					{showCompleted ? (<i className="fa-solid fa-rotate-left" />) : (<i className="fa-solid fa-check" />)}
 				</button>
-				<button className="task-action-button"
+				<button title="Delete Task"
+					className="task-action-button"
 					disabled={selectedTaskId === null}
 					onClick={removeTask}
 				>

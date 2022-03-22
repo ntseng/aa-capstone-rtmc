@@ -44,7 +44,8 @@ export default function TaskDetails({ lists, avatarURL }) {
 			onChange={e => setDueDate(e.target.value)}
 			onBlur={e => dispatch(editTask({ task, dueDate: e.target.value }))}
 		/>
-		<button id="trash-due-date-button"
+		<button title="Clear Due Date"
+			id="trash-due-date-button"
 			hidden={!task?.dueDate}
 			onClick={e => dispatch(editTask({ task, dueDate: null }))}
 		>

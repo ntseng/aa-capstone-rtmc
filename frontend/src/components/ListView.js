@@ -30,7 +30,8 @@ export default function ListView({ inboxId, ownerId }) {
 		<img id="logo" src="/images/cow.svg" alt="logo" />
 		<div id="lists-label">
 			<div className="list-link">Lists</div>
-			<button className="list-button"
+			<button title="Add List"
+				className="list-button"
 				onClick={e => openModal("newList")}
 			>
 				<i className="fa-solid fa-plus" />
@@ -52,12 +53,16 @@ export default function ListView({ inboxId, ownerId }) {
 								{list.title}
 							</NavLink>
 							<div className="list-actions-container">
-								<button className="list-button"
+								<button title="Rename List"
+									className="list-button"
 									onClick={e => openModal(`renameList/${list.id}`)}
 								>
 									<i className="fa-solid fa-pencil" />
 								</button>
-								<button className="list-button" onClick={e => openModal(`deleteList/${list.id}`)}>
+								<button title="Delete List"
+									className="list-button"
+									onClick={e => openModal(`deleteList/${list.id}`)}
+								>
 									<i className="fa-solid fa-trash-can" />
 								</button>
 							</div>

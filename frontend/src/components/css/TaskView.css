@@ -12,7 +12,7 @@
 }
 
 .completion-link {
-	border: 1px dotted #e5e5e5;
+	border: 1px dotted #6e6e6e;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	border-bottom: none;
@@ -31,14 +31,14 @@
 }
 
 #task-action-container {
-	border-top: 1px dotted #e5e5e5;
+	border-top: 1px dotted #6e6e6e;
 	margin-left: 10px;
 	margin-right: 10px;
 }
 
 .task-action-button {
 	background-color: white;
-	border: 1px solid grey;
+	border: 1px solid #6e6e6e;
 	margin: 10px;
 	border-radius: 4px;
 	padding-top: 10px;
